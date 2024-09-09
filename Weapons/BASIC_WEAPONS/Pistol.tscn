@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://g3qfemchb3v8"]
+[gd_scene load_steps=7 format=3 uid="uid://c20pxxqi0ijnh"]
 
-[ext_resource type="Script" path="res://Weapons/Pistol/Weapon.gd" id="1_03sp7"]
-[ext_resource type="Texture2D" uid="uid://dyjx2rqia2ity" path="res://GunsSprites/SMG.png" id="2_gjflb"]
+[ext_resource type="Script" path="res://Weapons/BASIC_WEAPONS/Weapon.gd" id="1_1rkfl"]
+[ext_resource type="Texture2D" uid="uid://h27x30xavl11" path="res://GunsSprites/PISTOL.png" id="2_e60n4"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_siaqo"]
-radius = 84.006
+radius = 68.0
 
 [sub_resource type="Animation" id="Animation_vhemd"]
 resource_name = "Recoil"
@@ -20,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.02, 0.05),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(20, 0), Vector2(17, 0), Vector2(20, 0)]
+"values": [Vector2(10, 0), Vector2(8, 0), Vector2(10, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_jkpm5"]
@@ -38,7 +39,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.7, 1.5),
 "transitions": PackedFloat32Array(0.732043, 1, 0.574349),
 "update": 0,
-"values": [Vector2(20, 0), Vector2(25, 0), Vector2(20, 0)]
+"values": [Vector2(10, 0), Vector2(15, 0), Vector2(10, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y5k47"]
@@ -47,12 +48,11 @@ _data = {
 "idle": SubResource("Animation_jkpm5")
 }
 
-[node name="SMG" type="Area2D"]
+[node name="PISTOL" type="Area2D"]
 collision_layer = 0
 collision_mask = 3
 collision_priority = 0.0
-script = ExtResource("1_03sp7")
-fire_rate = 0.05
+script = ExtResource("1_1rkfl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_siaqo")
@@ -60,11 +60,11 @@ shape = SubResource("CircleShape2D_siaqo")
 [node name="WeaponPivot" type="Marker2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="WeaponPivot"]
-position = Vector2(17, 0)
-texture = ExtResource("2_gjflb")
+position = Vector2(8, 0)
+texture = ExtResource("2_e60n4")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Sprite2D"]
-position = Vector2(7, -0.5)
+position = Vector2(6, -2)
 
 [node name="FireRateTimer" type="Timer" parent="."]
 

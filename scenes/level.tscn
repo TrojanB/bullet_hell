@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://boghcjcjyt0s3"]
+[gd_scene load_steps=10 format=3 uid="uid://boghcjcjyt0s3"]
 
+[ext_resource type="Script" path="res://LEVEL_MENAGMENT.gd" id="1_34mi1"]
 [ext_resource type="Texture2D" uid="uid://38c5u6tlsam2" path="res://TileMaps/groundTileMap.png" id="1_qmjgj"]
 [ext_resource type="PackedScene" uid="uid://dee6qi8gj5dkd" path="res://Player/player.tscn" id="1_ypxxp"]
 [ext_resource type="Texture2D" uid="uid://bgf2ldge6wnhg" path="res://TileMaps/spr_tileset_sunnysideworld_16px.png" id="2_d57tj"]
@@ -1250,11 +1251,11 @@ texture = ExtResource("2_d57tj")
 51:8/0 = 0
 51:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 51:8/0/physics_layer_0/angular_velocity = 0.0
-51:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.75, -8, 8, -8, 8, -0.875, 0.875, -0.875)
+51:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.75, -8, -8, -8, -8, -0.875, -0.875, -0.875)
 52:8/0 = 0
 52:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 52:8/0/physics_layer_0/angular_velocity = 0.0
-52:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.75, -8, -8, -8, -8, -0.875, -0.875, -0.875)
+52:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.75, -8, -8, -8, -8, -0.125, -0.875, -0.875)
 55:8/0 = 0
 55:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 55:8/0/physics_layer_0/angular_velocity = 0.0
@@ -5349,6 +5350,20 @@ sources/0 = SubResource("TileSetAtlasSource_7fxoh")
 sources/1 = SubResource("TileSetAtlasSource_w447n")
 
 [node name="level" type="Node2D"]
+script = ExtResource("1_34mi1")
+
+[node name="Spawn_Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Spawn_Area" type="Node" parent="."]
+
+[node name="Spawn_Point_1" type="Marker2D" parent="Spawn_Area"]
+position = Vector2(-270, -140)
+
+[node name="Spawn_Point_2" type="Marker2D" parent="Spawn_Area"]
+position = Vector2(226, 189)
+
+[node name="Enemies" type="Node" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -5375,7 +5390,7 @@ position = Vector2(-131, 41)
 position = Vector2(-102, -46)
 
 [node name="Enemy6" parent="." instance=ExtResource("3_22v0f")]
-position = Vector2(157, -29)
+position = Vector2(123, -30)
 
 [node name="Enemy7" parent="." instance=ExtResource("3_22v0f")]
 position = Vector2(138, 48)
@@ -5387,10 +5402,12 @@ position = Vector2(113, -92)
 position = Vector2(-249, -40)
 
 [node name="Enemy10" parent="." instance=ExtResource("5_clnyg")]
-position = Vector2(-77, 112)
+position = Vector2(-85, 109)
 
 [node name="Enemy11" parent="." instance=ExtResource("5_clnyg")]
 position = Vector2(44, 72)
 
 [node name="Enemy12" parent="." instance=ExtResource("5_clnyg")]
 position = Vector2(96, 119)
+
+[connection signal="timeout" from="Spawn_Timer" to="." method="_on_spawn_timer_timeout"]

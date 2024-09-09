@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed := 100
-@export var health := 100
+@export var speed :float = 100
+@export var health : float = 100
 var character_direction : Vector2
 
 @onready var player_model = $PlayerModel

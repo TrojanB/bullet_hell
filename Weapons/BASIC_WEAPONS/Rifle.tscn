@@ -1,7 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://5t085ilu8gse"]
 
-[ext_resource type="Script" path="res://Weapons/Pistol/Weapon.gd" id="1_6r715"]
+[ext_resource type="Script" path="res://Weapons/BASIC_WEAPONS/Weapon.gd" id="1_6r715"]
 [ext_resource type="Texture2D" uid="uid://cn1v1iqjweyr2" path="res://GunsSprites/RIFLE.png" id="2_otivo"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_siaqo"]
 radius = 95.0

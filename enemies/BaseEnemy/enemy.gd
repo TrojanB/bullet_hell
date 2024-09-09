@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 #enemy properties
-@export var speed := 50
-@export var health := 50
-@export var attack_damage := 20
-@export var knockback_force := 100
-@export var attack_delay := 2
+@export var speed : float = 50
+@export var health :float = 50
+@export var attack_damage : float = 20
+@export var knockback_force : float = 100
+@export var attack_delay : float = 2
 
 #player reference
 @onready var player = get_node("/root/level/Player")
