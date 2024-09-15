@@ -12,21 +12,24 @@ extends Node2D
 
 @onready var enemies_folder = $Enemies
 
-var enemy : CharacterBody2D
+
+signal indicator_disapeared
 
 func _ready():
 	spawn_delay.wait_time = delay_spawn
 	spawn_point_1 = get_node("Player/Spawn_Area/Spawn_Point_1")
 	spawn_point_2 = get_node("Player/Spawn_Area/Spawn_Point_2")
-	spawn_enemy()
-func spawn_enemy():
-	enemy = Enemies.enemies[int(randf_range(0, Enemies.enemies.size()))].instantiate()
+	spawn_indicator()
+
+func spawn_indicator():
 	var enemy_position = create_enemy_pos()
+	
 	while enemy_position.distance_to(player.global_position) < 30:
 		enemy_position = create_enemy_pos()
-	enemy.global_position = enemy_position
+		
 	var spawn_in = Enemies.spawn_indicator.instantiate()
 	spawn_in.global_position  = enemy_position
+	
 	add_child(spawn_in)
 	spawn_delay.start()
 	spawn_indicator_delay.start()
@@ -38,8 +41,11 @@ func create_enemy_pos():
 	return enemy_position
 
 func _on_spawn_timer_timeout():
-	spawn_enemy()
+	spawn_indicator()
 
-func _spawn_indicator_finished():
+#this funcion is from spawn indicator scene connected via connect(Callable) bla bla bla
+func _spawn_enemy(pos):
+	var enemy = Enemies.enemies[int(randf_range(0, Enemies.enemies.size()))].instantiate()
+	enemy.global_position = pos
 	add_child(enemy)
 

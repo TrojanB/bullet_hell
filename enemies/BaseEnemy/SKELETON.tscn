@@ -1,8 +1,8 @@
 [gd_scene load_steps=37 format=3 uid="uid://bohlagt34rexl"]
 
 [ext_resource type="Script" path="res://enemies/BaseEnemy/enemy.gd" id="1_vw1k3"]
-[ext_resource type="Texture2D" uid="uid://iukeyov7yvo3" path="res://GameSprites/full_health_bar.png" id="2_pn2g6"]
-[ext_resource type="Texture2D" uid="uid://bydoqujch2tmv" path="res://GameSprites/blank_health_bar.png" id="3_bsyu6"]
+[ext_resource type="Texture2D" uid="uid://iukeyov7yvo3" path="res://GameSprites/HEALTHBARS/full_health_bar.png" id="2_pn2g6"]
+[ext_resource type="Texture2D" uid="uid://bydoqujch2tmv" path="res://GameSprites/HEALTHBARS/blank_health_bar.png" id="3_bsyu6"]
 [ext_resource type="Script" path="res://enemies/BaseEnemy/EnemyHealthBarScript.gd" id="4_j4rdi"]
 [ext_resource type="Shader" path="res://enemy.gdshader" id="5_cfy8j"]
 [ext_resource type="Texture2D" uid="uid://csdwyp076s6f0" path="res://enemies/EnemiesSprites/SKELETON/skeleton_attack_strip7.png" id="6_e1u1k"]

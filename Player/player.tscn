@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://5t085ilu8gse" path="res://Weapons/BASIC_WEAPONS/Rifle.tscn" id="6_vinf2"]
 [ext_resource type="PackedScene" uid="uid://g3qfemchb3v8" path="res://Weapons/BASIC_WEAPONS/SMG.tscn" id="7_vfola"]
 [ext_resource type="PackedScene" uid="uid://c20pxxqi0ijnh" path="res://Weapons/BASIC_WEAPONS/Pistol.tscn" id="7_xi5id"]
-[ext_resource type="Texture2D" uid="uid://iukeyov7yvo3" path="res://GameSprites/full_health_bar.png" id="9_khm4g"]
-[ext_resource type="Texture2D" uid="uid://bydoqujch2tmv" path="res://GameSprites/blank_health_bar.png" id="10_g03tw"]
+[ext_resource type="Texture2D" uid="uid://iukeyov7yvo3" path="res://GameSprites/HEALTHBARS/full_health_bar.png" id="9_j0ttj"]
+[ext_resource type="Texture2D" uid="uid://bydoqujch2tmv" path="res://GameSprites/HEALTHBARS/blank_health_bar.png" id="10_n6sn5"]
 [ext_resource type="Script" path="res://Player/HealthBar.gd" id="11_uyx5v"]
 
 [sub_resource type="Animation" id="Animation_7f0tc"]
@@ -174,6 +174,7 @@ motion_mode = 1
 script = ExtResource("1_125yn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
 script = ExtResource("2_a0r76")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
@@ -216,15 +217,15 @@ offset_top = -13.0
 offset_right = 19.0
 offset_bottom = -3.0
 scale = Vector2(0.5, 0.3)
-texture_under = ExtResource("9_khm4g")
-texture_over = ExtResource("10_g03tw")
-texture_progress = ExtResource("9_khm4g")
+texture_under = ExtResource("9_j0ttj")
+texture_over = ExtResource("10_n6sn5")
+texture_progress = ExtResource("9_j0ttj")
 tint_under = Color(0.21677, 0.366637, 0.179546, 1)
 tint_over = Color(0.101961, 0.101961, 0.101961, 1)
 tint_progress = Color(0.49013, 0.761686, 0.422345, 1)
 script = ExtResource("11_uyx5v")
 
-[node name="Spawn_Area" type="Node" parent="."]
+[node name="Spawn_Area" type="Node2D" parent="."]
 
 [node name="Spawn_Point_1" type="Marker2D" parent="Spawn_Area"]
 position = Vector2(-270, -140)

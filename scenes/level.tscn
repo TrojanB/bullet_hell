@@ -5387,5 +5387,26 @@ position = Vector2(-102, -46)
 [node name="Enemy6" parent="." instance=ExtResource("3_22v0f")]
 position = Vector2(123, -30)
 
+[node name="Enemy7" parent="." instance=ExtResource("3_22v0f")]
+position = Vector2(158, -74)
+
+[node name="Enemy8" parent="." instance=ExtResource("3_22v0f")]
+position = Vector2(78, -78)
+
+[node name="Enemy9" parent="." instance=ExtResource("3_22v0f")]
+position = Vector2(176, -39)
+
+[node name="Enemy10" parent="." instance=ExtResource("3_22v0f")]
+position = Vector2(175, -9)
+
+[node name="Enemy11" parent="." instance=ExtResource("3_22v0f")]
+position = Vector2(164, 5)
+
+[node name="Enemy12" parent="." instance=ExtResource("3_22v0f")]
+position = Vector2(110, 23)
+
+[node name="Enemy13" parent="." instance=ExtResource("3_22v0f")]
+position = Vector2(134, 26)
+
 [connection signal="timeout" from="Spawn_Delay" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Spawn_Indicator_Delay" to="." method="_on_spawn_indicator_delay_timeout"]

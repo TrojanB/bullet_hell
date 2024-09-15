@@ -18,6 +18,14 @@ config/features=PackedStringArray("4.2", "Mobile")
 
 Enemies="*res://scripts/enemies.gd"
 
+[display]
+
+window/size/viewport_width=90
+window/size/viewport_height=160
+window/size/window_width_override=360
+window/size/window_height_override=640
+window/stretch/mode="canvas_items"
+
 [input]
 
 walk_up={

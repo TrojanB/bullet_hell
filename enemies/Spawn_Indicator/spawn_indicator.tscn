@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgfyy1pwok4v1"]
 
-[ext_resource type="Texture2D" uid="uid://bd6gpeapl1e8s" path="res://GameSprites/X.png" id="1_y4nk4"]
-[ext_resource type="Script" path="res://spawn_indicator.gd" id="2_8laxs"]
+[ext_resource type="Texture2D" uid="uid://ebt2k8cinv6n" path="res://GameSprites/SPAWN_INDICATORS/spawn_indicator_v4.png" id="1_nw6ul"]
+[ext_resource type="Script" path="res://enemies/Spawn_Indicator/spawn_indicator.gd" id="1_oc7cs"]
 
 [sub_resource type="Animation" id="Animation_caybs"]
 resource_name = "flashing"
@@ -26,9 +26,8 @@ _data = {
 
 [node name="Spawn_Indicator" type="Sprite2D"]
 self_modulate = Color(0.866667, 0.235294, 0.270588, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_y4nk4")
-script = ExtResource("2_8laxs")
+texture = ExtResource("1_nw6ul")
+script = ExtResource("1_oc7cs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

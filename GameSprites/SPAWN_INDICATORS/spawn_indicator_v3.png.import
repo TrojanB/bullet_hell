@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bydoqujch2tmv"
-path="res://.godot/imported/blank_health_bar.png-af91161e769d06c9a7d499be956936ce.ctex"
+uid="uid://ij8yuu5hhkny"
+path="res://.godot/imported/spawn_indicator_v3.png-c52066da28dbb97f8a3b961bbf228366.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameSprites/blank_health_bar.png"
-dest_files=["res://.godot/imported/blank_health_bar.png-af91161e769d06c9a7d499be956936ce.ctex"]
+source_file="res://GameSprites/SPAWN_INDICATORS/spawn_indicator_v3.png"
+dest_files=["res://.godot/imported/spawn_indicator_v3.png-c52066da28dbb97f8a3b961bbf228366.ctex"]
 
 [params]
 
