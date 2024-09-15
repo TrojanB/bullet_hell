@@ -174,7 +174,6 @@ motion_mode = 1
 script = ExtResource("1_125yn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
 script = ExtResource("2_a0r76")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
@@ -224,6 +223,14 @@ tint_under = Color(0.21677, 0.366637, 0.179546, 1)
 tint_over = Color(0.101961, 0.101961, 0.101961, 1)
 tint_progress = Color(0.49013, 0.761686, 0.422345, 1)
 script = ExtResource("11_uyx5v")
+
+[node name="Spawn_Area" type="Node" parent="."]
+
+[node name="Spawn_Point_1" type="Marker2D" parent="Spawn_Area"]
+position = Vector2(-270, -140)
+
+[node name="Spawn_Point_2" type="Marker2D" parent="Spawn_Area"]
+position = Vector2(230, 190)
 
 [connection signal="take_damage" from="." to="HealthBar" method="_on_player_take_damage"]
 [connection signal="animation_finished" from="Camera2D/AnimationPlayer" to="Camera2D" method="_on_animation_player_animation_finished"]

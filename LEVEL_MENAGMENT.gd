@@ -1,32 +1,45 @@
 extends Node2D
 
-var enemies : Array = [
-	preload("res://enemies/BaseEnemy/SKELETON.tscn"),
-	preload("res://enemies/BaseEnemy/GOBLIN.tscn")
-]
-
 @export var delay_spawn : int = 1
-@onready var spawn_timer = $Spawn_Timer
+@onready var spawn_delay = $Spawn_Delay
+@onready var spawn_indicator_delay = $Spawn_Indicator_Delay
 
 #between these points the enemis will spawn [left top corner, bottom right corner]
-@onready var spawn_point_1 = $Spawn_Area/Spawn_Point_1
-@onready var spawn_point_2 = $Spawn_Area/Spawn_Point_2
+#These points are moving with player
+@onready var spawn_point_1 : Marker2D
+@onready var spawn_point_2 : Marker2D
+@export var player : CharacterBody2D
 
 @onready var enemies_folder = $Enemies
 
-func _ready():
-	spawn_timer.wait_time = delay_spawn
-	spawn_enemy()
+var enemy : CharacterBody2D
 
+func _ready():
+	spawn_delay.wait_time = delay_spawn
+	spawn_point_1 = get_node("Player/Spawn_Area/Spawn_Point_1")
+	spawn_point_2 = get_node("Player/Spawn_Area/Spawn_Point_2")
+	spawn_enemy()
 func spawn_enemy():
-	var enemy = enemies[int(randf_range(0, enemies.size()))].instantiate()
+	enemy = Enemies.enemies[int(randf_range(0, Enemies.enemies.size()))].instantiate()
+	var enemy_position = create_enemy_pos()
+	while enemy_position.distance_to(player.global_position) < 30:
+		enemy_position = create_enemy_pos()
+	enemy.global_position = enemy_position
+	var spawn_in = Enemies.spawn_indicator.instantiate()
+	spawn_in.global_position  = enemy_position
+	add_child(spawn_in)
+	spawn_delay.start()
+	spawn_indicator_delay.start()
+
+func create_enemy_pos():
 	var spawn_position_x = randf_range(spawn_point_1.global_position.x, spawn_point_2.global_position.x)
 	var spawn_position_y = randf_range(spawn_point_1.global_position.y, spawn_point_2.global_position.y)
-	enemies_folder.add_child(enemy)
-	enemy.global_position = Vector2(spawn_position_x, spawn_position_y)
-	
-	spawn_timer.start()
-
+	var enemy_position = Vector2(spawn_position_x, spawn_position_y) 
+	return enemy_position
 
 func _on_spawn_timer_timeout():
 	spawn_enemy()
+
+func _spawn_indicator_finished():
+	add_child(enemy)
+

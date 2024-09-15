@@ -84,7 +84,6 @@ func _on_take_damage_timer_timeout():
 
 func _on_enemy_sprite_animation_finished():
 	var finished_animation = enemy_sprite.animation
-	print("FINISHED ", finished_animation)
 	
 	if finished_animation == "dying":
 		queue_free()
