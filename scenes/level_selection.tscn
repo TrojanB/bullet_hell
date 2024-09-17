@@ -30,6 +30,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 3
@@ -37,23 +38,36 @@ vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Panel/ScrollContainer/HBoxContainer"]
+[node name="Level_Slot" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Level_Slot" parent="Panel/ScrollContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_2j8wu")]
+[node name="Level_Slot2" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+mouse_filter = 2
 
-[node name="Level_Slot2" parent="Panel/ScrollContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_2j8wu")]
+[node name="Level_Slot3" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Level_Slot3" parent="Panel/ScrollContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_2j8wu")]
+[node name="Level_Slot4" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Level_Slot4" parent="Panel/ScrollContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_2j8wu")]
+[node name="Level_Slot5" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
+mouse_filter = 2
+
+[node name="Level_Slot6" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Level_Slot7" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Level_Slot8" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+mouse_filter = 2
