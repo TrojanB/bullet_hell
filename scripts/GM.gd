@@ -1,0 +1,3 @@
+extends Node
+
+enum game_mode {KILL_AMOUNT,SURVIVE_TIME,KILL_AMOUNT_TIME,KILL_BOSS}

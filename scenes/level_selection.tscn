@@ -40,6 +40,11 @@ vertical_scroll_mode = 0
 layout_mode = 2
 theme_override_constants/separation = 10
 
+[node name="BLANK_SPACE" type="Control" parent="Panel/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+
 [node name="Level_Slot" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
@@ -47,27 +52,19 @@ mouse_filter = 2
 [node name="Level_Slot2" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
+game_mode = 1
 
 [node name="Level_Slot3" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
+game_mode = 2
 
 [node name="Level_Slot4" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
+game_mode = 3
 
-[node name="Level_Slot5" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Level_Slot6" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Level_Slot7" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Level_Slot8" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+[node name="BLANK_SPACE2" type="Control" parent="Panel/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 mouse_filter = 2

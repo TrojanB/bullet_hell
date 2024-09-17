@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "Mobile")
 [autoload]
 
 Enemies="*res://scripts/enemies.gd"
+Gm="*res://scripts/GM.gd"
 
 [display]
 

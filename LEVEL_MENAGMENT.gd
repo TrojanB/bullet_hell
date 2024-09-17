@@ -8,9 +8,10 @@ extends Node2D
 #These points are moving with player
 @onready var spawn_point_1 : Marker2D
 @onready var spawn_point_2 : Marker2D
-@export var player : CharacterBody2D
+var player : CharacterBody2D
 
 @onready var enemies_folder = $Enemies
+var game_mode : Gm.game_mode
 
 signal indicator_disapeared
 
@@ -18,6 +19,9 @@ func _ready():
 	spawn_delay.wait_time = delay_spawn
 	spawn_point_1 = get_node("Player/Spawn_Area/Spawn_Point_1")
 	spawn_point_2 = get_node("Player/Spawn_Area/Spawn_Point_2")
+	
+	player = get_node("Player")
+	
 	spawn_indicator()
 
 func spawn_indicator():
