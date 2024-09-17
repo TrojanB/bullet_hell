@@ -5410,3 +5410,4 @@ position = Vector2(134, 26)
 
 [connection signal="timeout" from="Spawn_Delay" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Spawn_Indicator_Delay" to="." method="_on_spawn_indicator_delay_timeout"]
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]

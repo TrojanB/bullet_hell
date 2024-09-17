@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed : float = 50
 @export var health :float = 50
 @export var attack_damage : float = 20
-@export var knockback_force : float = 100
+@export var knockback_force : float = 5
 @export var attack_delay : float = 2
 
 #player reference
@@ -67,7 +67,7 @@ func take_damage(attack : Attack):
 		collision_layer = 0
 		collision_mask = 0
 		enemy_sprite.play("dying")
-	var knockback_direction = attack.attack_position.direction_to(self.global_position)
+	var knockback_direction = attack.attack_position.direction_to(global_position)
 	var knockback = knockback_direction * attack.knockback_force
 	global_position += knockback
 	

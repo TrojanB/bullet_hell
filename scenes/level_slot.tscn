@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://qs3wmsh44i4a"]
+
+[ext_resource type="Texture2D" uid="uid://bd6gpeapl1e8s" path="res://GameSprites/SPAWN_INDICATORS/X.png" id="1_q5wpo"]
+[ext_resource type="Theme" uid="uid://ky5myamsyvlm" path="res://Themes/play_btn.tres" id="2_7l1tc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jw2o"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.882353)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.321569, 0.752941, 0.376471, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_44h0a"]
+Panel/styles/panel = SubResource("StyleBoxFlat_3jw2o")
+
+[node name="Level_Slot" type="Control"]
+z_index = 2
+custom_minimum_size = Vector2(90, 160)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_44h0a")
+
+[node name="Level_Name" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 33.0
+grow_horizontal = 2
+text = "LEVEL 1"
+horizontal_alignment = 1
+
+[node name="Level_Image" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_q5wpo")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -30.0
+offset_right = 24.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_7l1tc")
+text = "PLAY"

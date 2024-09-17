@@ -1,0 +1,264 @@
+[gd_scene load_steps=35 format=3 uid="uid://dee6qi8gj5dkd"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_125yn"]
+[ext_resource type="Texture2D" uid="uid://bgc0t56l24g6l" path="res://Player/PlayerSprites/IDLE/base_idle_strip9.png" id="1_c0a7n"]
+[ext_resource type="Script" path="res://Player/camera_recoil.gd" id="2_a0r76"]
+[ext_resource type="Texture2D" uid="uid://ywb8xwvuqlrk" path="res://Player/PlayerSprites/RUN/base_run_strip8.png" id="2_pymyg"]
+[ext_resource type="Script" path="res://Player/WeaponDisplay.gd" id="4_m51tt"]
+[ext_resource type="PackedScene" uid="uid://5t085ilu8gse" path="res://Weapons/BASIC_WEAPONS/Rifle.tscn" id="6_vinf2"]
+[ext_resource type="PackedScene" uid="uid://g3qfemchb3v8" path="res://Weapons/BASIC_WEAPONS/SMG.tscn" id="7_vfola"]
+[ext_resource type="PackedScene" uid="uid://c20pxxqi0ijnh" path="res://Weapons/BASIC_WEAPONS/Pistol.tscn" id="7_xi5id"]
+[ext_resource type="Texture2D" uid="uid://iukeyov7yvo3" path="res://GameSprites/HEALTHBARS/full_health_bar.png" id="9_j0ttj"]
+[ext_resource type="Texture2D" uid="uid://bydoqujch2tmv" path="res://GameSprites/HEALTHBARS/blank_health_bar.png" id="10_n6sn5"]
+[ext_resource type="Script" path="res://Player/HealthBar.gd" id="11_uyx5v"]
+[ext_resource type="PackedScene" uid="uid://78yn13mmrxel" path="res://scenes/game_over.tscn" id="12_yn45q"]
+
+[sub_resource type="Animation" id="Animation_aoqe4"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7f0tc"]
+resource_name = "camera_shaking"
+length = 0.06
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.5, 0.2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vbg2r"]
+_data = {
+"RESET": SubResource("Animation_aoqe4"),
+"camera_shaking": SubResource("Animation_7f0tc")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haafh"]
+atlas = ExtResource("1_c0a7n")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmkoq"]
+atlas = ExtResource("1_c0a7n")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0upi"]
+atlas = ExtResource("1_c0a7n")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11djo"]
+atlas = ExtResource("1_c0a7n")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvqxn"]
+atlas = ExtResource("1_c0a7n")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44v67"]
+atlas = ExtResource("1_c0a7n")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjfkd"]
+atlas = ExtResource("1_c0a7n")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkrbx"]
+atlas = ExtResource("1_c0a7n")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bptga"]
+atlas = ExtResource("1_c0a7n")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxlx2"]
+atlas = ExtResource("2_pymyg")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb655"]
+atlas = ExtResource("2_pymyg")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5p2w"]
+atlas = ExtResource("2_pymyg")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qklxy"]
+atlas = ExtResource("2_pymyg")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04g2s"]
+atlas = ExtResource("2_pymyg")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj8kq"]
+atlas = ExtResource("2_pymyg")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etxif"]
+atlas = ExtResource("2_pymyg")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0s5i"]
+atlas = ExtResource("2_pymyg")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wixgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haafh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmkoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0upi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11djo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvqxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44v67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjfkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkrbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bptga")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxlx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb655")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5p2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qklxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04g2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj8kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etxif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0s5i")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_al2ng"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_125yn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("2_a0r76")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_vbg2r")
+}
+
+[node name="PlayerModel" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wixgp")
+animation = &"Walk"
+autoplay = "Idle"
+frame = 2
+frame_progress = 0.12791
+
+[node name="PlayerHitArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitArea"]
+scale = Vector2(1.3, 1.3)
+shape = SubResource("CircleShape2D_al2ng")
+
+[node name="Weapons" type="Node2D" parent="."]
+script = ExtResource("4_m51tt")
+
+[node name="RIFLE" parent="Weapons" instance=ExtResource("6_vinf2")]
+damage = 10.0
+knockback_force = 3.0
+
+[node name="PISTOL" parent="Weapons" instance=ExtResource("7_xi5id")]
+fire_rate = 0.5
+damage = 0.1
+
+[node name="SMG" parent="Weapons" instance=ExtResource("7_vfola")]
+damage = 0.1
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -7.0
+offset_top = -13.0
+offset_right = 19.0
+offset_bottom = -3.0
+scale = Vector2(0.5, 0.3)
+texture_under = ExtResource("9_j0ttj")
+texture_over = ExtResource("10_n6sn5")
+texture_progress = ExtResource("9_j0ttj")
+tint_under = Color(0.21677, 0.366637, 0.179546, 1)
+tint_over = Color(0.101961, 0.101961, 0.101961, 1)
+tint_progress = Color(0.49013, 0.761686, 0.422345, 1)
+script = ExtResource("11_uyx5v")
+
+[node name="Spawn_Area" type="Node2D" parent="."]
+
+[node name="Spawn_Point_1" type="Marker2D" parent="Spawn_Area"]
+position = Vector2(-270, -140)
+
+[node name="Spawn_Point_2" type="Marker2D" parent="Spawn_Area"]
+position = Vector2(230, 190)
+
+[node name="GAME_OVER" parent="." instance=ExtResource("12_yn45q")]
+z_index = 3
+custom_minimum_size = Vector2(90, 160)
+offset_left = -90.0
+offset_top = -160.0
+scale = Vector2(2, 2)
+
+[connection signal="player_died" from="." to="." method="_on_player_died"]
+[connection signal="update_healthbar" from="." to="HealthBar" method="_on_player_update_healthbar"]
+[connection signal="animation_finished" from="Camera2D/AnimationPlayer" to="Camera2D" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="PlayerHitArea" to="." method="_on_player_hit_area_body_entered"]
+[connection signal="body_exited" from="PlayerHitArea" to="." method="_on_player_hit_area_body_exited"]

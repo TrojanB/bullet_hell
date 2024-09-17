@@ -9,6 +9,5 @@ func _ready():
 	value = max_health
 	min_value = 0
 
-
-func _on_player_take_damage(health):
+func _on_player_update_healthbar(health):
 	value = health

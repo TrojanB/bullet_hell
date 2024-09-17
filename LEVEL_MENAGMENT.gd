@@ -12,7 +12,6 @@ extends Node2D
 
 @onready var enemies_folder = $Enemies
 
-
 signal indicator_disapeared
 
 func _ready():
@@ -49,3 +48,7 @@ func _spawn_enemy(pos):
 	enemy.global_position = pos
 	add_child(enemy)
 
+
+
+func _on_player_player_died():
+		pass

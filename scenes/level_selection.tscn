@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://by2v5b3aae5sw"]
+
+[ext_resource type="PackedScene" uid="uid://qs3wmsh44i4a" path="res://scenes/level_slot.tscn" id="1_2j8wu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll38d"]
+bg_color = Color(0.431373, 0.623529, 0.780392, 1)
+
+[sub_resource type="Theme" id="Theme_6pg6c"]
+Panel/styles/panel = SubResource("StyleBoxFlat_ll38d")
+
+[node name="Level_Selection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6pg6c")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Panel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Level_Slot" parent="Panel/ScrollContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Level_Slot2" parent="Panel/ScrollContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+
+[node name="Level_Slot3" parent="Panel/ScrollContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+
+[node name="Level_Slot4" parent="Panel/ScrollContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2

@@ -1,39 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0m8jr5qmepo7"]
+[gd_scene load_steps=19 format=3 uid="uid://d0m8jr5qmepo7"]
 
 [ext_resource type="FontFile" uid="uid://dxf0rvegqcyfs" path="res://Fonts/BULKYPIX.TTF" id="1_mxrkb"]
 [ext_resource type="FontFile" uid="uid://lo56ky08qfev" path="res://Fonts/3D-Thirteen-Pixel-Fonts.ttf" id="1_w55dg"]
+[ext_resource type="Script" path="res://scenes/menu.gd" id="1_yoac7"]
 [ext_resource type="Texture2D" uid="uid://cfbko7532f1kg" path="res://Player/PlayerSprites/IDLE/character_icon.png" id="2_bf3lv"]
 [ext_resource type="Texture2D" uid="uid://bgc0t56l24g6l" path="res://Player/PlayerSprites/IDLE/base_idle_strip9.png" id="2_qnokc"]
-[ext_resource type="FontFile" uid="uid://t7vnh0padj13" path="res://Fonts/prstart.ttf" id="4_cktcq"]
+[ext_resource type="Theme" uid="uid://ky5myamsyvlm" path="res://Themes/play_btn.tres" id="3_7yabw"]
 [ext_resource type="Texture2D" uid="uid://h27x30xavl11" path="res://GunsSprites/PISTOL.png" id="4_kxjkn"]
-[ext_resource type="Texture2D" uid="uid://lk7fgpsoqo30" path="res://GameSprites/BUTTONS/[4] Green/[3] Hover.png" id="5_3n3o4"]
-[ext_resource type="Texture2D" uid="uid://ch776x4p16kc8" path="res://GameSprites/BUTTONS/[4] Green/[1] Normal.png" id="5_gsduo"]
-[ext_resource type="Texture2D" uid="uid://b3opbgnakwtmu" path="res://GameSprites/BUTTONS/[4] Green/[2] Clicked.png" id="7_2n8y8"]
 
 [sub_resource type="Theme" id="Theme_3r48t"]
 Button/font_sizes/font_size = 8
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o28ox"]
-content_margin_bottom = 2.0
-texture = ExtResource("5_3n3o4")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bot5i"]
-content_margin_bottom = 2.0
-texture = ExtResource("5_gsduo")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wpbwn"]
-content_margin_bottom = 0.0
-texture = ExtResource("7_2n8y8")
-
-[sub_resource type="Theme" id="Theme_tct8c"]
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_outline_color = Color(0.0141399, 0.364026, 4.81308e-08, 1)
-Button/constants/outline_size = 1
-Button/font_sizes/font_size = 8
-Button/fonts/font = ExtResource("4_cktcq")
-Button/styles/hover = SubResource("StyleBoxTexture_o28ox")
-Button/styles/normal = SubResource("StyleBoxTexture_bot5i")
-Button/styles/pressed = SubResource("StyleBoxTexture_wpbwn")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc4h6"]
 atlas = ExtResource("2_qnokc")
@@ -113,15 +89,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yoac7")
 
 [node name="Background" type="ColorRect" parent="."]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.269847, 0.455758, 1)
+color = Color(0, 0.270588, 0.454902, 1)
 
 [node name="TITLE" type="Label" parent="Background"]
 layout_mode = 0
@@ -131,6 +109,23 @@ scale = Vector2(0.93, 0.93)
 theme_override_fonts/font = ExtResource("1_w55dg")
 text = "BULLET HELL"
 horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -50.0
+offset_right = 24.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_7yabw")
+text = "PLAY
+"
 
 [node name="CustomizeButton" type="Button" parent="Background"]
 custom_minimum_size = Vector2(20, 20)
@@ -210,23 +205,6 @@ text = "GUNS
 "
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="Background"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -50.0
-offset_right = 24.0
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_tct8c")
-text = "PLAY
-"
-
 [node name="BottomButtons" type="HBoxContainer" parent="Background"]
 z_index = 1
 layout_mode = 1
@@ -256,9 +234,10 @@ custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
-z_index = 1
 position = Vector2(44, 80)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_f2wm1")
 animation = &"idle"
 autoplay = "idle"
+
+[connection signal="button_up" from="Background/PlayButton" to="." method="_on_play_button_button_up"]
