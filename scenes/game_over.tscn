@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://78yn13mmrxel"]
+[gd_scene load_steps=10 format=3 uid="uid://78yn13mmrxel"]
 
+[ext_resource type="Script" path="res://scripts/game_over_sreen_script.gd" id="1_btx4d"]
 [ext_resource type="FontFile" uid="uid://dlgaprnvgnphb" path="res://Fonts/ka1.ttf" id="1_fwdll"]
 [ext_resource type="Theme" uid="uid://ky5myamsyvlm" path="res://Themes/play_btn.tres" id="2_t8e1f"]
 [ext_resource type="Texture2D" uid="uid://bxt3jj0ma6yqe" path="res://GameSprites/BUTTONS/[2] Red/[1] Normal.png" id="3_647gr"]
@@ -25,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_btx4d")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 self_modulate = Color(0.196078, 0.196078, 0.196078, 0.784314)
@@ -90,3 +92,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_b5lfm")
 theme_override_styles/hover = SubResource("StyleBoxTexture_q3yly")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_oxg03")
 text = "MAIN MENU"
+
+[connection signal="button_up" from="ColorRect/Play_Again_Button" to="." method="_on_play_again_button_button_up"]
+[connection signal="button_up" from="ColorRect/Main_Menu_Button" to="." method="_on_main_menu_button_button_up"]

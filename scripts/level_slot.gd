@@ -5,7 +5,7 @@ extends Control
 @onready var description = $Panel/Description
 @onready var image = $Panel/Image
 
-@export var map : PackedScene = preload("res://scenes/level.tscn")
+@export var map : String = "res://scenes/level.tscn"
 @export var goal : int = 20
 @export var game_mode : Gm.game_mode = Gm.game_mode.KILL_AMOUNT
 
@@ -24,4 +24,4 @@ func _ready():
 
 
 func _on_button_button_up():
-	print("LEVEL CLICKED")
+	get_tree().change_scene_to_file(map)
