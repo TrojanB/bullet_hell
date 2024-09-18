@@ -224,7 +224,7 @@ shape = SubResource("RectangleShape2D_2dwb4")
 [node name="CanAttackTimer" type="Timer" parent="."]
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-z_index = 3
+z_index = 2
 offset_left = -6.0
 offset_top = -18.0
 offset_right = 20.0

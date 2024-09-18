@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dee6qi8gj5dkd"]
+[gd_scene load_steps=40 format=3 uid="uid://dee6qi8gj5dkd"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_125yn"]
 [ext_resource type="Texture2D" uid="uid://bgc0t56l24g6l" path="res://Player/PlayerSprites/IDLE/base_idle_strip9.png" id="1_c0a7n"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bydoqujch2tmv" path="res://GameSprites/HEALTHBARS/blank_health_bar.png" id="10_n6sn5"]
 [ext_resource type="Script" path="res://Player/HealthBar.gd" id="11_uyx5v"]
 [ext_resource type="PackedScene" uid="uid://78yn13mmrxel" path="res://scenes/game_over.tscn" id="12_yn45q"]
+[ext_resource type="FontFile" uid="uid://dxf0rvegqcyfs" path="res://Fonts/BULKYPIX.TTF" id="13_hqwup"]
+[ext_resource type="Script" path="res://Player/Level_Goal_Label.gd" id="14_qb36p"]
 
 [sub_resource type="Animation" id="Animation_aoqe4"]
 resource_name = "RESET"
@@ -185,6 +187,43 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_al2ng"]
 
+[sub_resource type="Animation" id="Animation_qg8dp"]
+resource_name = "typing_effect"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level_Goal:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2da0b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level_Goal:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yqdcq"]
+_data = {
+"RESET": SubResource("Animation_2da0b"),
+"typing_effect": SubResource("Animation_qg8dp")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 3
 motion_mode = 1
@@ -229,6 +268,7 @@ damage = 0.1
 damage = 0.1
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+z_index = 3
 offset_left = -7.0
 offset_top = -13.0
 offset_right = 19.0
@@ -252,14 +292,39 @@ position = Vector2(230, 190)
 
 [node name="GAME_OVER" parent="." instance=ExtResource("12_yn45q")]
 process_mode = 3
+visible = false
 z_index = 3
-custom_minimum_size = Vector2(90, 160)
 offset_left = -90.0
 offset_top = -160.0
 scale = Vector2(2, 2)
+
+[node name="Level_Goal" type="Label" parent="."]
+z_index = 4
+custom_minimum_size = Vector2(180, 0)
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -90.0
+offset_top = -150.0
+offset_right = 90.0
+offset_bottom = -125.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("13_hqwup")
+text = "TIME LEFT TO KILL ENEMIES:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("14_qb36p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level_Goal"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yqdcq")
+}
+autoplay = "typing_effect"
 
 [connection signal="player_died" from="." to="." method="_on_player_died"]
 [connection signal="update_healthbar" from="." to="HealthBar" method="_on_player_update_healthbar"]
 [connection signal="animation_finished" from="Camera2D/AnimationPlayer" to="Camera2D" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="PlayerHitArea" to="." method="_on_player_hit_area_body_entered"]
 [connection signal="body_exited" from="PlayerHitArea" to="." method="_on_player_hit_area_body_exited"]
+[connection signal="animation_finished" from="Level_Goal/AnimationPlayer" to="Level_Goal" method="_on_animation_player_animation_finished"]

@@ -5357,6 +5357,8 @@ wait_time = 3.0
 [node name="Spawn_Indicator_Delay" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="Level_Timer" type="Timer" parent="."]
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5367,6 +5369,7 @@ layer_0/tile_data = PackedInt32Array(65534, 65536, 1, 65535, 65536, 1, -131080, 
 
 [node name="Player" parent="." instance=ExtResource("1_ypxxp")]
 z_index = 1
+position = Vector2(-568, 312)
 
 [node name="Enemy" parent="." instance=ExtResource("3_22v0f")]
 position = Vector2(29, 107)

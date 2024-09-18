@@ -11,7 +11,8 @@ extends Node2D
 var player : CharacterBody2D
 
 @onready var enemies_folder = $Enemies
-var game_mode : Gm.game_mode
+var game_mode : Gm.game_mode = Gm.game_mode.KILL_AMOUNT
+var goal := 15
 
 signal indicator_disapeared
 
@@ -21,6 +22,12 @@ func _ready():
 	spawn_point_2 = get_node("Player/Spawn_Area/Spawn_Point_2")
 	
 	player = get_node("Player")
+	
+	if player:
+		var label = player.get_node("Level_Goal")
+		if label: 
+			label.game_mode = game_mode
+			label.goal = goal
 	
 	spawn_indicator()
 
@@ -51,8 +58,6 @@ func _spawn_enemy(pos):
 	var enemy = Enemies.enemies[int(randf_range(0, Enemies.enemies.size()))].instantiate()
 	enemy.global_position = pos
 	add_child(enemy)
-
-
 
 func _on_player_player_died():
 		pass
