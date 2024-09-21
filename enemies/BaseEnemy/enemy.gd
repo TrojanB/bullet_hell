@@ -21,10 +21,13 @@ var in_attack_range := false
 var can_move := true
 
 signal took_damage
+signal enemy_died
 
 var one : float = 1
 
 func _ready():
+	connect("enemy_died", Callable(get_parent(), "_on_enemy_died"))
+	
 	can_attack_timer.wait_time = attack_delay
 	health_bar.max_health = int(health)
 
@@ -67,6 +70,7 @@ func take_damage(attack : Attack):
 		collision_layer = 0
 		collision_mask = 0
 		enemy_sprite.play("dying")
+		enemy_died.emit()
 	var knockback_direction = attack.attack_position.direction_to(global_position)
 	var knockback = knockback_direction * attack.knockback_force
 	global_position += knockback
@@ -89,3 +93,9 @@ func _on_enemy_sprite_animation_finished():
 		queue_free()
 	if finished_animation == "attack":
 		enemy_sprite.play("walking")
+
+func _on_enemy_died():
+	print("ENEMY DIED")
+	var level = get_parent()
+	if level:
+		level.update_killcount()

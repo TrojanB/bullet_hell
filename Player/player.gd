@@ -7,6 +7,8 @@ var character_direction : Vector2
 @onready var player_model = $PlayerModel
 @onready var pistol = $Weapons/Pistol
 @onready var health_bar = $HealthBar
+@onready var level_goal = $Level_Goal
+
 
 signal update_healthbar
 signal player_died
@@ -54,3 +56,6 @@ func _on_player_died():
 	$GAME_OVER.visible = true
 	$Camera2D/AnimationPlayer.play("RESET")
 	get_tree().paused = true
+	
+func update_ui(killcount : int):
+	level_goal.text = killcount

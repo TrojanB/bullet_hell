@@ -1,6 +1,6 @@
 extends Label
 
-var game_mode : Gm.game_mode = Gm.game_mode.SURVIVE_TIME
+var game_mode : Gm.game_mode = Gm.game_mode.KILL_AMOUNT
 var goal : int = 10
 
 func _ready():

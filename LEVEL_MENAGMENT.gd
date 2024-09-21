@@ -61,3 +61,9 @@ func _spawn_enemy(pos):
 
 func _on_player_player_died():
 		pass
+
+func update_killcount():
+	match game_mode:
+		Gm.game_mode.KILL_AMOUNT: 
+			goal-=1
+			player.update_ui(goal)
