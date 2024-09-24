@@ -10,11 +10,26 @@ extends Control
 @export var goal : int = 20
 @export var game_mode : Gm.game_mode = Gm.game_mode.KILL_AMOUNT
 @export var can_play := false
+@export var complteted := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	MOUSE_FILTER_IGNORE
 	level_name.text = str(level_number)
+	update_ui()
+
+
+func _on_button_button_up():
+	if can_play:
+		get_tree().change_scene_to_file(map)
+
+func is_completed():
+	return complteted
+
+func change_can_play(value : bool):
+	can_play = value
+	
+func update_ui():
 	if can_play: 
 		match game_mode:
 			Gm.game_mode.KILL_AMOUNT:
@@ -28,9 +43,3 @@ func _ready():
 		modulate = Color(1,1,1)
 	else:
 		modulate = Color(0.405, 0.405, 0.405)
-	
-
-
-func _on_button_button_up():
-	if can_play:
-		get_tree().change_scene_to_file(map)

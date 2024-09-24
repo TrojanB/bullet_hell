@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://by2v5b3aae5sw"]
+[gd_scene load_steps=5 format=3 uid="uid://by2v5b3aae5sw"]
 
 [ext_resource type="PackedScene" uid="uid://qs3wmsh44i4a" path="res://scenes/level_slot.tscn" id="1_2j8wu"]
+[ext_resource type="Script" path="res://scripts/Levels_Container.gd" id="1_hqtea"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll38d"]
 bg_color = Color(0.431373, 0.623529, 0.780392, 1)
@@ -39,6 +40,7 @@ vertical_scroll_mode = 0
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+script = ExtResource("1_hqtea")
 
 [node name="BLANK_SPACE" type="Control" parent="Panel/ScrollContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 1)
@@ -51,18 +53,21 @@ mouse_filter = 2
 level_number = 1
 goal = 30
 can_play = true
+complteted = true
 
 [node name="Level_Slot2" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
 level_number = 2
 goal = 50
+complteted = true
 
 [node name="Level_Slot3" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
 level_number = 3
 goal = 60
+complteted = true
 
 [node name="Level_Slot4" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
