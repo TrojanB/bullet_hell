@@ -6,15 +6,18 @@ var character_direction : Vector2
 
 @onready var player_model = $PlayerModel
 @onready var pistol = $Weapons/Pistol
-@onready var health_bar = $HealthBar
-@onready var level_goal = $Level_Goal
 
+#UI
+@onready var game_over = $UI/GAME_OVER
+@onready var health_bar = $UI/HealthBar
+@onready var level_goal = $UI/Level_Goal
 
 signal update_healthbar
 signal player_died
+signal introduction_ended
 
 func _ready():
-	$GAME_OVER.visible = false
+	game_over.visible = false
 
 
 func _physics_process(delta):
@@ -53,9 +56,15 @@ func _on_player_hit_area_body_exited(body):
 
 
 func _on_player_died():
-	$GAME_OVER.visible = true
+	game_over.visible = true
 	$Camera2D/AnimationPlayer.play("RESET")
 	get_tree().paused = true
 	
 func update_ui(killcount : int):
-	level_goal.text = killcount
+	level_goal.text = str(killcount)
+
+
+func _on_animation_player_animation_finished(anim_name):
+	var level = get_parent()
+	if level.has_method("start_spawning"):
+		level.start_spawning()

@@ -28,7 +28,8 @@ func _ready():
 		if label: 
 			label.game_mode = game_mode
 			label.goal = goal
-	
+
+func start_spawning():
 	spawn_indicator()
 
 func spawn_indicator():
@@ -67,3 +68,14 @@ func update_killcount():
 		Gm.game_mode.KILL_AMOUNT: 
 			goal-=1
 			player.update_ui(goal)
+			if goal <= 0:
+				level_passed()
+
+func _on_enemy_died():
+	update_killcount()
+
+func level_passed():
+	var lvl_passed_screen = player.get_node("UI/level_passed")
+	if lvl_passed_screen:
+		lvl_passed_screen.visible = true
+	get_tree().paused = true

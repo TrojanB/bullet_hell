@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dee6qi8gj5dkd"]
+[gd_scene load_steps=41 format=3 uid="uid://dee6qi8gj5dkd"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_125yn"]
 [ext_resource type="Texture2D" uid="uid://bgc0t56l24g6l" path="res://Player/PlayerSprites/IDLE/base_idle_strip9.png" id="1_c0a7n"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://78yn13mmrxel" path="res://scenes/game_over.tscn" id="12_yn45q"]
 [ext_resource type="FontFile" uid="uid://dxf0rvegqcyfs" path="res://Fonts/BULKYPIX.TTF" id="13_hqwup"]
 [ext_resource type="Script" path="res://Player/Level_Goal_Label.gd" id="14_qb36p"]
+[ext_resource type="PackedScene" uid="uid://b0ft22l8oj7rc" path="res://scenes/level_passed.tscn" id="15_sycgu"]
 
 [sub_resource type="Animation" id="Animation_aoqe4"]
 resource_name = "RESET"
@@ -192,7 +193,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Level_Goal:visible_ratio")
+tracks/0/path = NodePath("UI/Level_Goal:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -208,11 +209,11 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Level_Goal:visible_ratio")
+tracks/0/path = NodePath("UI/Level_Goal:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.5, 2.5),
+"times": PackedFloat32Array(0, 1, 1.5, 2.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 1.0, 1.0, 0.0]
@@ -267,7 +268,17 @@ damage = 0.1
 [node name="SMG" parent="Weapons" instance=ExtResource("7_vfola")]
 damage = 0.1
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
+[node name="Spawn_Area" type="Node2D" parent="."]
+
+[node name="Spawn_Point_1" type="Marker2D" parent="Spawn_Area"]
+position = Vector2(-270, -140)
+
+[node name="Spawn_Point_2" type="Marker2D" parent="Spawn_Area"]
+position = Vector2(230, 190)
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI"]
 z_index = 3
 offset_left = -7.0
 offset_top = -13.0
@@ -282,31 +293,15 @@ tint_over = Color(0.101961, 0.101961, 0.101961, 1)
 tint_progress = Color(0.49013, 0.761686, 0.422345, 1)
 script = ExtResource("11_uyx5v")
 
-[node name="Spawn_Area" type="Node2D" parent="."]
-
-[node name="Spawn_Point_1" type="Marker2D" parent="Spawn_Area"]
-position = Vector2(-270, -140)
-
-[node name="Spawn_Point_2" type="Marker2D" parent="Spawn_Area"]
-position = Vector2(230, 190)
-
-[node name="GAME_OVER" parent="." instance=ExtResource("12_yn45q")]
-process_mode = 3
-visible = false
+[node name="Level_Goal" type="Label" parent="UI"]
 z_index = 3
-offset_left = -90.0
-offset_top = -160.0
-scale = Vector2(2, 2)
-
-[node name="Level_Goal" type="Label" parent="."]
-z_index = 4
 custom_minimum_size = Vector2(180, 0)
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = -90.0
 offset_top = -150.0
 offset_right = 90.0
-offset_bottom = -125.0
+offset_bottom = -113.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("13_hqwup")
 text = "TIME LEFT TO KILL ENEMIES:"
@@ -315,16 +310,31 @@ vertical_alignment = 1
 autowrap_mode = 2
 script = ExtResource("14_qb36p")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level_Goal"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Level_Goal"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_yqdcq")
 }
 autoplay = "typing_effect"
 
+[node name="GAME_OVER" parent="UI" instance=ExtResource("12_yn45q")]
+process_mode = 3
+visible = false
+z_index = 4
+offset_left = -90.0
+offset_top = -160.0
+scale = Vector2(2, 2)
+
+[node name="level_passed" parent="UI" instance=ExtResource("15_sycgu")]
+process_mode = 3
+visible = false
+z_index = 4
+scale = Vector2(2, 2)
+
 [connection signal="player_died" from="." to="." method="_on_player_died"]
-[connection signal="update_healthbar" from="." to="HealthBar" method="_on_player_update_healthbar"]
+[connection signal="update_healthbar" from="." to="UI/HealthBar" method="_on_player_update_healthbar"]
 [connection signal="animation_finished" from="Camera2D/AnimationPlayer" to="Camera2D" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="PlayerHitArea" to="." method="_on_player_hit_area_body_entered"]
 [connection signal="body_exited" from="PlayerHitArea" to="." method="_on_player_hit_area_body_exited"]
-[connection signal="animation_finished" from="Level_Goal/AnimationPlayer" to="Level_Goal" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="UI/Level_Goal/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="UI/Level_Goal/AnimationPlayer" to="UI/Level_Goal" method="_on_animation_player_animation_finished"]

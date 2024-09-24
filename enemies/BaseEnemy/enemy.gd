@@ -31,7 +31,7 @@ func _ready():
 	can_attack_timer.wait_time = attack_delay
 	health_bar.max_health = int(health)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player and can_move:
 		direction = global_position.direction_to(player.global_position)
 		velocity = direction.normalized() * speed

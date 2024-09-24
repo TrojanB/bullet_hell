@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://78yn13mmrxel"]
+[gd_scene load_steps=13 format=3 uid="uid://78yn13mmrxel"]
 
 [ext_resource type="Script" path="res://scripts/game_over_sreen_script.gd" id="1_btx4d"]
 [ext_resource type="FontFile" uid="uid://dlgaprnvgnphb" path="res://Fonts/ka1.ttf" id="1_fwdll"]
@@ -7,16 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://irvc1gsfvxiy" path="res://GameSprites/BUTTONS/[2] Red/[3] Hover.png" id="4_1l827"]
 [ext_resource type="Texture2D" uid="uid://brq3t85m3ejyr" path="res://GameSprites/BUTTONS/[2] Red/[2] Clicked.png" id="5_gj8gn"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b5lfm"]
-content_margin_bottom = 2.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fvgw3"]
 texture = ExtResource("3_647gr")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3yly"]
-content_margin_bottom = 2.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4wbjq"]
 texture = ExtResource("4_1l827")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxg03"]
-content_margin_bottom = 0.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vhov5"]
+texture = ExtResource("5_gj8gn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dmw1x"]
+texture = ExtResource("3_647gr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a2rce"]
+texture = ExtResource("4_1l827")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nebao"]
 texture = ExtResource("5_gj8gn")
 
 [node name="GAME_OVER" type="Control"]
@@ -69,9 +75,9 @@ grow_vertical = 0
 theme = ExtResource("2_t8e1f")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 4
-theme_override_styles/normal = SubResource("StyleBoxTexture_b5lfm")
-theme_override_styles/hover = SubResource("StyleBoxTexture_q3yly")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_oxg03")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fvgw3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4wbjq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vhov5")
 text = "PLAY AGAIN"
 
 [node name="Main_Menu_Button" type="Button" parent="ColorRect"]
@@ -90,9 +96,9 @@ grow_vertical = 0
 theme = ExtResource("2_t8e1f")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 4
-theme_override_styles/normal = SubResource("StyleBoxTexture_b5lfm")
-theme_override_styles/hover = SubResource("StyleBoxTexture_q3yly")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_oxg03")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dmw1x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_a2rce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nebao")
 text = "MAIN MENU"
 
 [connection signal="button_up" from="ColorRect/Play_Again_Button" to="." method="_on_play_again_button_button_up"]

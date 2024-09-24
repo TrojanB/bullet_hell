@@ -1,6 +1,6 @@
 extends TextureProgressBar
 
-@onready var player = $".."
+@onready var player = $"../.."
 var max_health : int
 
 func _ready():

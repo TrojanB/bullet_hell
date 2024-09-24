@@ -48,18 +48,63 @@ mouse_filter = 2
 [node name="Level_Slot" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
+level_number = 1
+goal = 30
+can_play = true
 
 [node name="Level_Slot2" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
+level_number = 2
+goal = 50
 
 [node name="Level_Slot3" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
+level_number = 3
+goal = 60
 
 [node name="Level_Slot4" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
+level_number = 4
+goal = 70
+
+[node name="Level_Slot5" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+mouse_filter = 2
+level_number = 5
+goal = 70
+
+[node name="Level_Slot6" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+mouse_filter = 2
+level_number = 6
+goal = 70
+
+[node name="Level_Slot7" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+mouse_filter = 2
+level_number = 7
+goal = 70
+
+[node name="Level_Slot8" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+mouse_filter = 2
+level_number = 8
+goal = 70
+
+[node name="Level_Slot9" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+mouse_filter = 2
+level_number = 9
+goal = 70
+
+[node name="Level_Slot10" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
+layout_mode = 2
+mouse_filter = 2
+level_number = 10
+goal = 70
 
 [node name="BLANK_SPACE2" type="Control" parent="Panel/ScrollContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 1)
