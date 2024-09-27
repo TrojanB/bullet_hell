@@ -11,6 +11,7 @@ var character_direction : Vector2
 @onready var game_over = $UI/GAME_OVER
 @onready var health_bar = $UI/HealthBar
 @onready var level_goal = $UI/Level_Goal
+@onready var label_animation_finished := false
 
 signal update_healthbar
 signal player_died
@@ -66,5 +67,6 @@ func update_ui(killcount : int):
 
 func _on_animation_player_animation_finished(anim_name):
 	var level = get_parent()
+	label_animation_finished = true
 	if level.has_method("start_spawning"):
 		level.start_spawning()

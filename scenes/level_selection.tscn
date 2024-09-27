@@ -1,13 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://by2v5b3aae5sw"]
+[gd_scene load_steps=15 format=3 uid="uid://by2v5b3aae5sw"]
 
 [ext_resource type="PackedScene" uid="uid://qs3wmsh44i4a" path="res://scenes/level_slot.tscn" id="1_2j8wu"]
-[ext_resource type="Script" path="res://scripts/Levels_Container.gd" id="1_hqtea"]
+[ext_resource type="Script" path="res://scripts/Go_Back.gd" id="1_d54or"]
+[ext_resource type="Script" path="res://scripts/Levels_Menager.gd" id="1_hqtea"]
+[ext_resource type="Theme" uid="uid://ky5myamsyvlm" path="res://Themes/play_btn.tres" id="1_rkrkg"]
+[ext_resource type="PackedScene" uid="uid://d0m8jr5qmepo7" path="res://scenes/menu.tscn" id="2_1xai6"]
+[ext_resource type="Texture2D" uid="uid://bxt3jj0ma6yqe" path="res://GameSprites/BUTTONS/[2] Red/[1] Normal.png" id="2_ycn4l"]
+[ext_resource type="Texture2D" uid="uid://irvc1gsfvxiy" path="res://GameSprites/BUTTONS/[2] Red/[3] Hover.png" id="3_bgc5a"]
+[ext_resource type="Texture2D" uid="uid://brq3t85m3ejyr" path="res://GameSprites/BUTTONS/[2] Red/[2] Clicked.png" id="4_up50e"]
+[ext_resource type="Texture2D" uid="uid://ghbn4tgod2j0" path="res://GunsSprites/PistolBullet.png" id="5_nhtn5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll38d"]
 bg_color = Color(0.431373, 0.623529, 0.780392, 1)
 
 [sub_resource type="Theme" id="Theme_6pg6c"]
 Panel/styles/panel = SubResource("StyleBoxFlat_ll38d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfwcm"]
+texture = ExtResource("2_ycn4l")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5nvji"]
+texture = ExtResource("3_bgc5a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_42tl6"]
+texture = ExtResource("4_up50e")
 
 [node name="Level_Selection" type="Control"]
 layout_mode = 3
@@ -26,7 +42,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_6pg6c")
 
+[node name="Go_Back" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 16.0
+offset_bottom = 18.0
+theme = ExtResource("1_rkrkg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vfwcm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5nvji")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_42tl6")
+icon = ExtResource("5_nhtn5")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("1_d54or")
+scene = ExtResource("2_1xai6")
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+custom_minimum_size = Vector2(90, 130)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,6 +68,7 @@ anchor_bottom = 1.0
 offset_top = 22.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
@@ -50,65 +85,53 @@ mouse_filter = 2
 [node name="Level_Slot" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 1
 goal = 30
 can_play = true
-complteted = true
 
 [node name="Level_Slot2" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 2
-goal = 50
-complteted = true
+goal = 5
+game_mode = 1
 
 [node name="Level_Slot3" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 3
-goal = 60
-complteted = true
+goal = 3
 
 [node name="Level_Slot4" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 4
-goal = 70
+goal = 10
 
 [node name="Level_Slot5" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 5
-goal = 70
+goal = 10
 
 [node name="Level_Slot6" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 6
 goal = 70
 
 [node name="Level_Slot7" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 7
 goal = 70
 
 [node name="Level_Slot8" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 8
 goal = 70
 
 [node name="Level_Slot9" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 9
 goal = 70
 
 [node name="Level_Slot10" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-level_number = 10
 goal = 70
 
 [node name="BLANK_SPACE2" type="Control" parent="Panel/ScrollContainer/HBoxContainer"]

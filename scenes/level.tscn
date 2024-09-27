@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://boghcjcjyt0s3"]
 
-[ext_resource type="Script" path="res://LEVEL_MENAGMENT.gd" id="1_34mi1"]
+[ext_resource type="Script" path="res://level.gd" id="1_5g4h5"]
 [ext_resource type="Texture2D" uid="uid://38c5u6tlsam2" path="res://TileMaps/groundTileMap.png" id="1_qmjgj"]
 [ext_resource type="PackedScene" uid="uid://dee6qi8gj5dkd" path="res://Player/player.tscn" id="1_ypxxp"]
 [ext_resource type="Texture2D" uid="uid://bgf2ldge6wnhg" path="res://TileMaps/spr_tileset_sunnysideworld_16px.png" id="2_d57tj"]
@@ -5349,7 +5349,7 @@ sources/0 = SubResource("TileSetAtlasSource_7fxoh")
 sources/1 = SubResource("TileSetAtlasSource_w447n")
 
 [node name="level" type="Node2D"]
-script = ExtResource("1_34mi1")
+script = ExtResource("1_5g4h5")
 
 [node name="Spawn_Delay" type="Timer" parent="."]
 wait_time = 3.0
@@ -5410,6 +5410,8 @@ position = Vector2(110, 23)
 [node name="Enemy13" parent="." instance=ExtResource("3_22v0f")]
 position = Vector2(134, 26)
 
+[connection signal="level_completed_signal" from="." to="." method="_on_level_completed_signal"]
 [connection signal="timeout" from="Spawn_Delay" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Spawn_Indicator_Delay" to="." method="_on_spawn_indicator_delay_timeout"]
+[connection signal="timeout" from="Level_Timer" to="." method="_on_level_timer_timeout"]
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
