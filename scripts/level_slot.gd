@@ -6,8 +6,8 @@ extends Control
 @onready var image = $Panel/Image
 
 @export var level_id : int = 0
-@export var maps : Array = [
-	preload("res://scenes/level.tscn")
+@export var maps : Array[PackedScene] = [
+	preload("res://scenes/Levels_scenes/level.tscn")
 ]
 @export var goal : int = 20
 @export var game_mode : Gm.game_mode = Gm.game_mode.KILL_AMOUNT
