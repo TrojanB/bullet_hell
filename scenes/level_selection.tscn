@@ -102,7 +102,7 @@ goal = 3
 [node name="Level_Slot4" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2
 mouse_filter = 2
-goal = 10
+goal = 70
 
 [node name="Level_Slot5" parent="Panel/ScrollContainer/HBoxContainer" instance=ExtResource("1_2j8wu")]
 layout_mode = 2

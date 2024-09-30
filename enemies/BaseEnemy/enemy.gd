@@ -65,12 +65,7 @@ func attack_player():
 func take_damage(attack : Attack):
 	health -= attack.damage
 	if health <= 0:
-		can_move = false
-		velocity = Vector2.ZERO
-		collision_layer = 0
-		collision_mask = 0
-		enemy_sprite.play("dying")
-		enemy_died.emit()
+		die()
 	var knockback_direction = attack.attack_position.direction_to(global_position)
 	var knockback = knockback_direction * attack.knockback_force
 	global_position += knockback
@@ -94,8 +89,16 @@ func _on_enemy_sprite_animation_finished():
 	if finished_animation == "attack":
 		enemy_sprite.play("walking")
 
-func _on_enemy_died():
-	print("ENEMY DIED")
-	var level = get_parent()
-	if level:
-		level.update_killcount()
+func die():
+	can_move = false
+	velocity = Vector2.ZERO
+	collision_layer = 0
+	collision_mask = 0
+	enemy_sprite.play("dying")
+	enemy_died.emit()
+	drop_diamonds(global_position)
+
+func drop_diamonds(enemy_position : Vector2):
+	var diamond = Gm.diamond.instantiate()
+	diamond.global_position = enemy_position
+	get_parent().add_child(diamond)

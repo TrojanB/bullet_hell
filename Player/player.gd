@@ -70,3 +70,6 @@ func _on_animation_player_animation_finished(anim_name):
 	label_animation_finished = true
 	if level.has_method("start_spawning"):
 		level.start_spawning()
+		
+func is_player():
+	return true

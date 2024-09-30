@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkte46r3ikofp"]
+
+[ext_resource type="Script" path="res://scenes/Diamonds_scenes/diamond.gd" id="1_5u71n"]
+[ext_resource type="Texture2D" uid="uid://b0j10wyym4efd" path="res://GameSprites/DIAMONDS/blue_diamond.png" id="1_52ycp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ikxnn"]
+radius = 8.00023
+
+[sub_resource type="Animation" id="Animation_id8lv"]
+resource_name = "idle"
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pick_up_area/DiamondSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_541tm"]
+resource_name = "bouncing"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pick_up_area/DiamondSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xui6r"]
+_data = {
+"bouncing": SubResource("Animation_541tm"),
+"idle": SubResource("Animation_id8lv")
+}
+
+[node name="Diamond_Body" type="RigidBody2D"]
+position = Vector2(20, 60)
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_5u71n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.339588)
+scale = Vector2(0.5, 0.5)
+
+[node name="Pick_up_area" type="Area2D" parent="."]
+position = Vector2(0, -0.938942)
+collision_layer = 4
+collision_mask = 4
+
+[node name="DiamondSprite" type="Sprite2D" parent="Pick_up_area"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_52ycp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pick_up_area"]
+shape = SubResource("CircleShape2D_ikxnn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xui6r")
+}
+autoplay = "bouncing"
+
+[node name="ImpulseEnded" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Pick_up_area" to="." method="_on_pick_up_area_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ImpulseEnded" to="." method="_on_impulse_ended_timeout"]
