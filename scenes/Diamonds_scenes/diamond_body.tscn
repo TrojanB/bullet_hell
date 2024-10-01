@@ -6,6 +6,22 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ikxnn"]
 radius = 8.00023
 
+[sub_resource type="Animation" id="Animation_541tm"]
+resource_name = "bouncing"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pick_up_area/DiamondSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_id8lv"]
 resource_name = "idle"
 loop_mode = 2
@@ -23,22 +39,6 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -5)]
 }
 
-[sub_resource type="Animation" id="Animation_541tm"]
-resource_name = "bouncing"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pick_up_area/DiamondSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xui6r"]
 _data = {
 "bouncing": SubResource("Animation_541tm"),
@@ -47,7 +47,7 @@ _data = {
 
 [node name="Diamond_Body" type="RigidBody2D"]
 position = Vector2(20, 60)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_5u71n")

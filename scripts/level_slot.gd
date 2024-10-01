@@ -11,8 +11,8 @@ extends Control
 ]
 @export var goal : int = 20
 @export var game_mode : Gm.game_mode = Gm.game_mode.KILL_AMOUNT
-@export var can_play := false
-@export var completed := false
+@export var can_play := true
+@export var completed := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
