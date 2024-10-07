@@ -16,14 +16,14 @@ bg_color = Color(0.431373, 0.623529, 0.780392, 1)
 [sub_resource type="Theme" id="Theme_6pg6c"]
 Panel/styles/panel = SubResource("StyleBoxFlat_ll38d")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfwcm"]
-texture = ExtResource("2_ycn4l")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5nvji"]
 texture = ExtResource("3_bgc5a")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_42tl6"]
 texture = ExtResource("4_up50e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfwcm"]
+texture = ExtResource("2_ycn4l")
 
 [node name="Level_Selection" type="Control"]
 layout_mode = 3
@@ -49,9 +49,9 @@ offset_top = 1.0
 offset_right = 16.0
 offset_bottom = 18.0
 theme = ExtResource("1_rkrkg")
-theme_override_styles/normal = SubResource("StyleBoxTexture_vfwcm")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5nvji")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_42tl6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vfwcm")
 icon = ExtResource("5_nhtn5")
 icon_alignment = 1
 vertical_icon_alignment = 0

@@ -5,6 +5,7 @@ extends Node2D
 @onready var spawn_delay = $Spawn_Delay
 @onready var spawn_indicator_delay = $Spawn_Indicator_Delay
 @onready var level_timer = $Level_Timer
+@onready var collected_diamonds := 0
 
 #between these points the enemis will spawn [left top corner, bottom right corner]
 #These points are moving with player

@@ -1,0 +1,197 @@
+[gd_scene load_steps=18 format=3 uid="uid://drpcyl1q8qet1"]
+
+[ext_resource type="Texture2D" uid="uid://bgc0t56l24g6l" path="res://Player/PlayerSprites/IDLE/base_idle_strip9.png" id="1_mpgxl"]
+[ext_resource type="Texture2D" uid="uid://d4j3l4vxulf53" path="res://GameSprites/SHOPS_TEXTURES/GUN_STORE_DESK_v2.png" id="3_110cv"]
+[ext_resource type="FontFile" uid="uid://lo56ky08qfev" path="res://Fonts/3D-Thirteen-Pixel-Fonts.ttf" id="3_ho2yq"]
+[ext_resource type="PackedScene" uid="uid://c2rsohv2fxm48" path="res://scenes/buy_weapon_slot.tscn" id="4_bt8le"]
+[ext_resource type="Texture2D" uid="uid://d2pifka53wq6d" path="res://GameSprites/UI_SPRITES/right_arrow.png" id="5_rwbgs"]
+[ext_resource type="Texture2D" uid="uid://jvbtfl7ft7un" path="res://GameSprites/UI_SPRITES/left_arrow.png" id="6_puwy0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_340ad"]
+font = ExtResource("3_ho2yq")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4h6"]
+atlas = ExtResource("1_mpgxl")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7m0a"]
+atlas = ExtResource("1_mpgxl")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmwpc"]
+atlas = ExtResource("1_mpgxl")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcg6n"]
+atlas = ExtResource("1_mpgxl")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng87a"]
+atlas = ExtResource("1_mpgxl")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcqg7"]
+atlas = ExtResource("1_mpgxl")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mfk8"]
+atlas = ExtResource("1_mpgxl")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0rin"]
+atlas = ExtResource("1_mpgxl")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuadx"]
+atlas = ExtResource("1_mpgxl")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0e083"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc4h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7m0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmwpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcg6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng87a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcqg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mfk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0rin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuadx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="GunShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 160.0
+color = Color(0, 0.270588, 0.454902, 1)
+
+[node name="Textures" type="Node" parent="ColorRect"]
+
+[node name="CAHISER_DESK_TEXTURE" type="TextureRect" parent="ColorRect/Textures"]
+z_index = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -40.0
+offset_right = 45.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_110cv")
+
+[node name="Label" type="Label" parent="ColorRect/Textures/CAHISER_DESK_TEXTURE"]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 90.0
+offset_bottom = 34.0
+text = "GUN STORE"
+label_settings = SubResource("LabelSettings_340ad")
+horizontal_alignment = 1
+
+[node name="Player" type="AnimatedSprite2D" parent="ColorRect/Textures"]
+z_index = 1
+position = Vector2(40, 119)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_0e083")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 466.0
+offset_bottom = 90.0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/ScrollContainer"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+
+[node name="Buy_Weapon_Slot" parent="ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("4_bt8le")]
+layout_mode = 2
+
+[node name="Buy_Weapon_Slot6" parent="ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("4_bt8le")]
+layout_mode = 2
+
+[node name="Buy_Weapon_Slot7" parent="ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("4_bt8le")]
+layout_mode = 2
+
+[node name="Buy_Weapon_Slot8" parent="ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("4_bt8le")]
+layout_mode = 2
+
+[node name="Buy_Weapon_Slot2" parent="ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("4_bt8le")]
+layout_mode = 2
+
+[node name="Buy_Weapon_Slot3" parent="ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("4_bt8le")]
+layout_mode = 2
+
+[node name="Buy_Weapon_Slot4" parent="ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("4_bt8le")]
+layout_mode = 2
+
+[node name="Buy_Weapon_Slot5" parent="ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("4_bt8le")]
+layout_mode = 2
+
+[node name="Swipe_right" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 1.0
+offset_right = -4.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("5_rwbgs")
+expand_icon = true
+
+[node name="Swipe_right2" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 20.0
+offset_bottom = 17.0
+grow_vertical = 2
+icon = ExtResource("6_puwy0")
+expand_icon = true

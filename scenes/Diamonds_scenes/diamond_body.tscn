@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkte46r3ikofp"]
+[gd_scene load_steps=6 format=3 uid="uid://bkte46r3ikofp"]
 
-[ext_resource type="Script" path="res://scenes/Diamonds_scenes/diamond.gd" id="1_5u71n"]
-[ext_resource type="Texture2D" uid="uid://b0j10wyym4efd" path="res://GameSprites/DIAMONDS/blue_diamond.png" id="1_52ycp"]
+[ext_resource type="Script" path="res://scenes/Diamonds_scenes/diamond_body.gd" id="1_yenus"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ikxnn"]
 radius = 8.00023
@@ -50,7 +49,7 @@ position = Vector2(20, 60)
 collision_layer = 0
 collision_mask = 0
 gravity_scale = 0.0
-script = ExtResource("1_5u71n")
+script = ExtResource("1_yenus")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.339588)
@@ -63,7 +62,6 @@ collision_mask = 4
 
 [node name="DiamondSprite" type="Sprite2D" parent="Pick_up_area"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_52ycp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pick_up_area"]
 shape = SubResource("CircleShape2D_ikxnn")

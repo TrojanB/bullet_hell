@@ -11,11 +11,15 @@ var character_direction : Vector2
 @onready var game_over = $UI/GAME_OVER
 @onready var health_bar = $UI/HealthBar
 @onready var level_goal = $UI/Level_Goal
+@onready var diamonds_label = $UI/Diamonds_Label
 @onready var label_animation_finished := false
+
+@onready var diamonds := 0
 
 signal update_healthbar
 signal player_died
 signal introduction_ended
+signal player_picked_diamond
 
 func _ready():
 	game_over.visible = false
@@ -73,3 +77,7 @@ func _on_animation_player_animation_finished(anim_name):
 		
 func is_player():
 	return true
+
+func _on_player_picked_diamond(diamond_rarity):
+	diamonds+=diamond_rarity
+	diamonds_label.update_diamonds_label(diamonds, diamond_rarity)

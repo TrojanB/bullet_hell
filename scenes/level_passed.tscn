@@ -9,16 +9,13 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm6ec"]
 bg_color = Color(0.25, 0.25, 0.25, 0.784314)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_potyt"]
-texture = ExtResource("1_08m8x")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6kplc"]
 texture = ExtResource("2_cevk7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l2lvx"]
 texture = ExtResource("3_do2el")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lss6u"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_potyt"]
 texture = ExtResource("1_08m8x")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3cuw4"]
@@ -26,6 +23,9 @@ texture = ExtResource("2_cevk7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cey83"]
 texture = ExtResource("3_do2el")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lss6u"]
+texture = ExtResource("1_08m8x")
 
 [node name="level_passed" type="Control"]
 self_modulate = Color(1, 1, 1, 0.784314)
@@ -76,9 +76,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("1_0rpt4")
 theme_override_font_sizes/font_size = 4
-theme_override_styles/normal = SubResource("StyleBoxTexture_potyt")
 theme_override_styles/hover = SubResource("StyleBoxTexture_6kplc")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_l2lvx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_potyt")
 text = "MAIN MENU"
 
 [node name="PlayAgainButton" type="Button" parent="Panel"]
@@ -98,9 +98,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("1_0rpt4")
 theme_override_font_sizes/font_size = 4
-theme_override_styles/normal = SubResource("StyleBoxTexture_lss6u")
 theme_override_styles/hover = SubResource("StyleBoxTexture_3cuw4")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_cey83")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lss6u")
 text = "PLAY AGAIN"
 
 [connection signal="button_up" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_button_up"]
