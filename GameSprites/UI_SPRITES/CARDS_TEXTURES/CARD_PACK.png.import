@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8lvyosb6q6vi"
-path="res://.godot/imported/SHUTGUN_1.png-be58818f508046c7bc743ada7826b105.ctex"
+uid="uid://cjhnvtb4m18dx"
+path="res://.godot/imported/CARD_PACK.png-4f7da1e62c59a372751e64662126fb14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GunsSprites/SHUTGUN_1.png"
-dest_files=["res://.godot/imported/SHUTGUN_1.png-be58818f508046c7bc743ada7826b105.ctex"]
+source_file="res://GameSprites/UI_SPRITES/CARDS_TEXTURES/CARD_PACK.png"
+dest_files=["res://.godot/imported/CARD_PACK.png-4f7da1e62c59a372751e64662126fb14.ctex"]
 
 [params]
 

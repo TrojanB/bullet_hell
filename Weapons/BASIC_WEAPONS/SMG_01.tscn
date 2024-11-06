@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://5t085ilu8gse"]
+[gd_scene load_steps=7 format=3 uid="uid://g3qfemchb3v8"]
 
-[ext_resource type="Script" path="res://Weapons/BASIC_WEAPONS/Weapon.gd" id="1_6r715"]
-[ext_resource type="Texture2D" uid="uid://cn1v1iqjweyr2" path="res://GunsSprites/RIFLE.png" id="2_otivo"]
+[ext_resource type="Script" path="res://Weapons/BASIC_WEAPONS/Weapon.gd" id="1_03sp7"]
+[ext_resource type="Texture2D" uid="uid://dyjx2rqia2ity" path="res://GunsSprites/SMG_01.png" id="2_gjflb"]
+
 
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_siaqo"]
-radius = 95.0
+radius = 84.006
 
 [sub_resource type="Animation" id="Animation_vhemd"]
 resource_name = "Recoil"
@@ -21,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.02, 0.05),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(20, 0), Vector2(15, 0), Vector2(20, 0)]
+"values": [Vector2(20, 0), Vector2(17, 0), Vector2(20, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_jkpm5"]
@@ -48,12 +49,12 @@ _data = {
 "idle": SubResource("Animation_jkpm5")
 }
 
-[node name="RIFLE" type="Area2D"]
+[node name="SMG" type="Area2D"]
 collision_layer = 0
 collision_mask = 3
 collision_priority = 0.0
-script = ExtResource("1_6r715")
-recoil_factor = 10
+script = ExtResource("1_03sp7")
+fire_rate = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_siaqo")
@@ -61,11 +62,11 @@ shape = SubResource("CircleShape2D_siaqo")
 [node name="WeaponPivot" type="Marker2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="WeaponPivot"]
-position = Vector2(15, 0)
-texture = ExtResource("2_otivo")
+position = Vector2(17, 0)
+texture = ExtResource("2_gjflb")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Sprite2D"]
-position = Vector2(12.5, -1.5)
+position = Vector2(7, -0.5)
 
 [node name="FireRateTimer" type="Timer" parent="."]
 

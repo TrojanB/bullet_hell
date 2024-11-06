@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dytshngwqmqmt"
-path="res://.godot/imported/SHUTGUN_2.png-a23f61def1cf0c5a84dd18fb7493fd1f.ctex"
+uid="uid://cn1v1iqjweyr2"
+path="res://.godot/imported/RIFLE_01.png-cfc38059b730cc26a717a8e6e3be3d40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GunsSprites/SHUTGUN_2.png"
-dest_files=["res://.godot/imported/SHUTGUN_2.png-a23f61def1cf0c5a84dd18fb7493fd1f.ctex"]
+source_file="res://GunsSprites/RIFLE_01.png"
+dest_files=["res://.godot/imported/RIFLE_01.png-cfc38059b730cc26a717a8e6e3be3d40.ctex"]
 
 [params]
 

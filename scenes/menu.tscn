@@ -1,15 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0m8jr5qmepo7"]
+[gd_scene load_steps=21 format=3 uid="uid://d0m8jr5qmepo7"]
 
 [ext_resource type="FontFile" uid="uid://dxf0rvegqcyfs" path="res://Fonts/BULKYPIX.TTF" id="1_mxrkb"]
 [ext_resource type="FontFile" uid="uid://lo56ky08qfev" path="res://Fonts/3D-Thirteen-Pixel-Fonts.ttf" id="1_w55dg"]
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_yoac7"]
-[ext_resource type="Texture2D" uid="uid://cfbko7532f1kg" path="res://Player/PlayerSprites/IDLE/character_icon.png" id="2_bf3lv"]
 [ext_resource type="Texture2D" uid="uid://bgc0t56l24g6l" path="res://Player/PlayerSprites/IDLE/base_idle_strip9.png" id="2_qnokc"]
 [ext_resource type="Theme" uid="uid://ky5myamsyvlm" path="res://Themes/play_btn.tres" id="3_7yabw"]
-[ext_resource type="Texture2D" uid="uid://h27x30xavl11" path="res://GunsSprites/PISTOL.png" id="4_kxjkn"]
-
-[sub_resource type="Theme" id="Theme_3r48t"]
-Button/font_sizes/font_size = 8
+[ext_resource type="Script" path="res://scenes/bottom_buttons.gd" id="4_6gu83"]
+[ext_resource type="Texture2D" uid="uid://h27x30xavl11" path="res://GunsSprites/PISTOL_01.png" id="4_kxjkn"]
+[ext_resource type="Theme" uid="uid://bkhr06ys753vf" path="res://Themes/bottom_button.tres" id="5_uye66"]
+[ext_resource type="Texture2D" uid="uid://nym4u0d5dyt0" path="res://GameSprites/UI_SPRITES/accept_symbol.png" id="7_51qo8"]
+[ext_resource type="Texture2D" uid="uid://d4nvwc4b4aogs" path="res://GameSprites/UI_SPRITES/close_symbol.png" id="8_nb7lp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc4h6"]
 atlas = ExtResource("2_qnokc")
@@ -118,74 +118,41 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -24.0
-offset_top = -50.0
+offset_top = -80.0
 offset_right = 24.0
-offset_bottom = -34.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_7yabw")
 text = "PLAY
 "
 
-[node name="CustomizeButton" type="Button" parent="Background"]
-custom_minimum_size = Vector2(20, 20)
+[node name="BottomButtons" type="HBoxContainer" parent="Background"]
+z_index = 1
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 5.0
-offset_top = -10.0
-offset_right = 25.0
-offset_bottom = 10.0
-grow_vertical = 2
-scale = Vector2(0.75, 0.75)
-theme = SubResource("Theme_3r48t")
-theme_override_font_sizes/font_size = 8
-icon = ExtResource("2_bf3lv")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="Label" type="Label" parent="Background/CustomizeButton"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -8.75
-offset_top = -3.0
-offset_right = 49.25
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("1_mxrkb")
-theme_override_font_sizes/font_size = 8
-text = "CHARACTER"
-horizontal_alignment = 1
-
-[node name="WeaponsButton" type="Button" parent="Background"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = -1
+anchor_top = 0.859
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -10.0
-offset_bottom = 10.0
-grow_horizontal = 0
+anchor_bottom = 0.984
+offset_top = 7.56
+offset_bottom = 2.56
+grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.75, 0.75)
-theme = SubResource("Theme_3r48t")
-icon = ExtResource("4_kxjkn")
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("4_6gu83")
+
+[node name="WeaponsButton" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_uye66")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="Label" type="Label" parent="Background/WeaponsButton"]
+[node name="Label" type="Label" parent="Background/BottomButtons/WeaponsButton"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -205,39 +172,139 @@ text = "GUNS
 "
 horizontal_alignment = 1
 
-[node name="BottomButtons" type="HBoxContainer" parent="Background"]
-z_index = 1
+[node name="InventoryButton" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_uye66")
+icon = ExtResource("7_51qo8")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Background/BottomButtons/InventoryButton"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -34.0
-offset_top = -25.0
-offset_right = 34.0
-offset_bottom = -5.0
+offset_left = -8.75
+offset_top = -3.0
+offset_right = 49.25
+offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_mxrkb")
+theme_override_font_sizes/font_size = 8
+text = "INV
+"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Background/BottomButtons"]
-custom_minimum_size = Vector2(20, 20)
+[node name="MenuButton" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(20, 15)
 layout_mode = 2
-theme = SubResource("Theme_3r48t")
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("5_uye66")
+icon = ExtResource("8_nb7lp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
 
-[node name="Button2" type="Button" parent="Background/BottomButtons"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
+[node name="Label" type="Label" parent="Background/BottomButtons/MenuButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.75
+offset_top = -3.0
+offset_right = 49.25
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_mxrkb")
+theme_override_font_sizes/font_size = 8
+text = "MENU
+"
+horizontal_alignment = 1
 
-[node name="Button3" type="Button" parent="Background/BottomButtons"]
-custom_minimum_size = Vector2(20, 20)
+[node name="WeaponsButton2" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_uye66")
+icon = ExtResource("4_kxjkn")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Background/BottomButtons/WeaponsButton2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.75
+offset_top = -3.0
+offset_right = 49.25
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_mxrkb")
+theme_override_font_sizes/font_size = 8
+text = "GUNS
+"
+horizontal_alignment = 1
+
+[node name="WeaponsButton3" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_uye66")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Background/BottomButtons/WeaponsButton3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.75
+offset_top = -3.0
+offset_right = 49.25
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_mxrkb")
+theme_override_font_sizes/font_size = 8
+text = "GUNS
+"
+horizontal_alignment = 1
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
-position = Vector2(44, 80)
+position = Vector2(44, 50)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_f2wm1")
 animation = &"idle"
 autoplay = "idle"
 
 [connection signal="button_up" from="Background/PlayButton" to="." method="_on_play_button_button_up"]
+[connection signal="pressed" from="Background/BottomButtons/WeaponsButton" to="Background/BottomButtons" method="_on_weapons_button_pressed"]
+[connection signal="pressed" from="Background/BottomButtons/InventoryButton" to="Background/BottomButtons" method="_on_weapons_button_pressed"]
+[connection signal="pressed" from="Background/BottomButtons/MenuButton" to="Background/BottomButtons" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Background/BottomButtons/WeaponsButton2" to="Background/BottomButtons" method="_on_weapons_button_pressed"]
+[connection signal="pressed" from="Background/BottomButtons/WeaponsButton3" to="Background/BottomButtons" method="_on_weapons_button_pressed"]

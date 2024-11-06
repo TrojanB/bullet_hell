@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/3D-Thirteen-Pixel-Fonts.ttf-3e163edc1c6b6bca2
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bvl5qkhqujkb0"]
+
+[node name="Weapon_Slot" type="Control"]
+custom_minimum_size = Vector2(30, 47)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 30.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 47.0

@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://q284067aesjp"]
+
+[ext_resource type="Script" path="res://scenes/Card_Scenes/card_opening.gd" id="1_rctca"]
+[ext_resource type="PackedScene" uid="uid://dv06wdwrvrrb7" path="res://card_pack.tscn" id="1_xdaup"]
+[ext_resource type="FontFile" uid="uid://t7vnh0padj13" path="res://Fonts/prstart.ttf" id="2_o3jrq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_88wgc"]
+font = ExtResource("2_o3jrq")
+font_size = 6
+outline_size = 1
+outline_color = Color(6.257e-07, 0.619885, 0.447376, 1)
+shadow_size = 3
+shadow_color = Color(0.0177324, 0.0177324, 0.0177324, 0)
+
+[node name="Card_Opening" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rctca")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.126602, 0.574321, 0.761944, 1)
+
+[node name="Card_Pack" parent="ColorRect" instance=ExtResource("1_xdaup")]
+custom_minimum_size = Vector2(37.5, 66)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.75
+offset_top = -33.0
+offset_right = 18.75
+offset_bottom = 33.0
+taps_to_open = 10
+
+[node name="Tap_To_Open" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "TAP TO OPEN"
+label_settings = SubResource("LabelSettings_88wgc")
+horizontal_alignment = 1
+
+[connection signal="PACK_OPENED" from="ColorRect/Card_Pack" to="." method="_on_card_pack_pack_opened"]

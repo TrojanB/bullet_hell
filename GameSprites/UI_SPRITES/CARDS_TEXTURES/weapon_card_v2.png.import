@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyjx2rqia2ity"
-path="res://.godot/imported/SMG.png-8e9dbc5b566b03d027f2d80dc23d41e4.ctex"
+uid="uid://bc66hp63rmb0b"
+path="res://.godot/imported/weapon_card_v2.png-b07bce3d6601b4ed7e602448744f7ab8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GunsSprites/SMG.png"
-dest_files=["res://.godot/imported/SMG.png-8e9dbc5b566b03d027f2d80dc23d41e4.ctex"]
+source_file="res://GameSprites/UI_SPRITES/CARDS_TEXTURES/weapon_card_v2.png"
+dest_files=["res://.godot/imported/weapon_card_v2.png-b07bce3d6601b4ed7e602448744f7ab8.ctex"]
 
 [params]
 

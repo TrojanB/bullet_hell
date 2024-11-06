@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn1v1iqjweyr2"
-path="res://.godot/imported/RIFLE.png-229a536487a6ad8ac4e3ada0c6761725.ctex"
+uid="uid://c0jspcy67dwmb"
+path="res://.godot/imported/weapon_card_expand.png-aaf80d40780bba93f7e57d8560cedb01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GunsSprites/RIFLE.png"
-dest_files=["res://.godot/imported/RIFLE.png-229a536487a6ad8ac4e3ada0c6761725.ctex"]
+source_file="res://GameSprites/UI_SPRITES/CARDS_TEXTURES/weapon_card_expand.png"
+dest_files=["res://.godot/imported/weapon_card_expand.png-aaf80d40780bba93f7e57d8560cedb01.ctex"]
 
 [params]
 

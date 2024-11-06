@@ -1,0 +1,330 @@
+[gd_scene load_steps=26 format=3 uid="uid://cx7yfe6s4n1k7"]
+
+[ext_resource type="Script" path="res://scenes/Card_Scenes/weapon_card.gd" id="1_su21n"]
+[ext_resource type="Texture2D" uid="uid://bc66hp63rmb0b" path="res://GameSprites/UI_SPRITES/CARDS_TEXTURES/weapon_card_v2.png" id="2_4r1uh"]
+[ext_resource type="FontFile" uid="uid://t7vnh0padj13" path="res://Fonts/prstart.ttf" id="3_lxw4a"]
+[ext_resource type="Texture2D" uid="uid://dje3oj2ohkq8p" path="res://GameSprites/BUTTONS/[6] Silver/[3] Hover.png" id="4_p5wcy"]
+[ext_resource type="Texture2D" uid="uid://dns1et7yg7sls" path="res://GameSprites/BUTTONS/[3]Yellow/[2] Clicked.png" id="5_cqg7a"]
+[ext_resource type="Texture2D" uid="uid://chmxrb4lqj6cd" path="res://GameSprites/BUTTONS/[3]Yellow/[1] Normal.png" id="6_yc0t1"]
+[ext_resource type="FontFile" uid="uid://du2qauvfp7p5x" path="res://Fonts/PixeloidSans-Bold.ttf" id="7_hc6a7"]
+[ext_resource type="Texture2D" uid="uid://dytshngwqmqmt" path="res://GunsSprites/SHOTGUN_02.png" id="8_appvu"]
+[ext_resource type="Texture2D" uid="uid://c0jspcy67dwmb" path="res://GameSprites/UI_SPRITES/CARDS_TEXTURES/weapon_card_expand.png" id="9_on161"]
+[ext_resource type="FontFile" uid="uid://d3hsf8rev4rdj" path="res://Fonts/Moderniz.otf" id="10_lfjqa"]
+[ext_resource type="Texture2D" uid="uid://d2pifka53wq6d" path="res://GameSprites/UI_SPRITES/right_arrow.png" id="11_50rf5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jspdf"]
+font = ExtResource("3_lxw4a")
+font_size = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ifc1v"]
+texture = ExtResource("4_p5wcy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3y3rs"]
+texture = ExtResource("5_cqg7a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4y8rm"]
+texture = ExtResource("6_yc0t1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4rn8t"]
+font = ExtResource("7_hc6a7")
+font_size = 4
+font_color = Color(0.821689, 0.984426, 0.792475, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37su5"]
+bg_color = Color(0.099986, 0.099986, 0.099986, 1)
+border_color = Color(0.0295066, 0.0295066, 0.0295065, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7u7h"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 1
+border_color = Color(0.675915, 0.714323, 0.746848, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing_size = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_cavgi"]
+font = ExtResource("10_lfjqa")
+font_size = 3
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lntya"]
+line_spacing = 2.0
+font = ExtResource("7_hc6a7")
+font_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_r6o52"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_cygvm"]
+resource_name = "roll_down"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 22), Vector2(0, 36)]
+}
+
+[sub_resource type="Animation" id="Animation_uweuv"]
+resource_name = "roll_up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 36), Vector2(0, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_wi22r"]
+resource_name = "pop_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d1dlm"]
+_data = {
+"RESET": SubResource("Animation_r6o52"),
+"pop_up": SubResource("Animation_wi22r"),
+"roll_down": SubResource("Animation_cygvm"),
+"roll_up": SubResource("Animation_uweuv")
+}
+
+[node name="Weapon_Card" type="Control"]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 3
+offset_left = 15.0
+offset_top = 20.0
+offset_right = 45.0
+offset_bottom = 60.0
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(18, 24.5)
+script = ExtResource("1_su21n")
+
+[node name="Card_Panel" type="TextureRect" parent="."]
+self_modulate = Color(0.352941, 0.827451, 0.364706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4r1uh")
+
+[node name="Name_Label" type="Label" parent="Card_Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.5
+offset_bottom = -13.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "SHOTGUN"
+label_settings = SubResource("LabelSettings_jspdf")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Card_Panel"]
+custom_minimum_size = Vector2(12, 4)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = 8.66667
+offset_right = 11.0
+offset_bottom = 15.6667
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 3
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_ifc1v")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_3y3rs")
+theme_override_styles/normal = SubResource("StyleBoxTexture_4y8rm")
+text = "UPGRADE
+"
+
+[node name="Level_Label" type="Label" parent="Card_Panel"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+text = "LVL 1
+"
+label_settings = SubResource("LabelSettings_4rn8t")
+horizontal_alignment = 1
+
+[node name="Weapon_Texture" type="TextureRect" parent="Card_Panel"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.77778
+offset_top = -11.787
+offset_right = -9.22222
+offset_bottom = 8.21296
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.523599
+texture = ExtResource("8_appvu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Roll_Down_Panel" type="TextureRect" parent="."]
+self_modulate = Color(0.352941, 0.827451, 0.364706, 1)
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.606
+anchor_right = 1.0
+anchor_bottom = 0.97
+offset_top = -2.24
+offset_bottom = 3.2
+texture = ExtResource("9_on161")
+expand_mode = 1
+
+[node name="UpgradeProgress" type="ProgressBar" parent="Roll_Down_Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.3333
+offset_top = -7.54201
+offset_right = 10.6667
+offset_bottom = -3.54201
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_37su5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t7u7h")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="UpgradeProgressLabel" type="Label" parent="Roll_Down_Panel/UpgradeProgress"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -2.5
+offset_right = 4.0
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_cavgi")
+
+[node name="UpgradeIcon" type="TextureRect" parent="Roll_Down_Panel/UpgradeProgress"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -3.33334
+offset_top = -6.66667
+offset_right = 3.66666
+offset_bottom = 0.333335
+grow_vertical = 0
+rotation = 0.00535533
+texture = ExtResource("11_50rf5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Damage_Label" type="Label" parent="Roll_Down_Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 3.0
+offset_right = -15.0
+offset_bottom = 3.0
+grow_horizontal = 2
+text = "DMG: 100"
+label_settings = SubResource("LabelSettings_lntya")
+
+[node name="Fire_Rate_Label" type="Label" parent="Roll_Down_Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 3.0
+offset_top = 3.66666
+offset_right = -19.0
+offset_bottom = 7.66666
+grow_horizontal = 2
+text = "FR:"
+label_settings = SubResource("LabelSettings_lntya")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Roll_Down_Panel")
+libraries = {
+"": SubResource("AnimationLibrary_d1dlm")
+}
