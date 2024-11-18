@@ -1,7 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c20pxxqi0ijnh"]
 
-[ext_resource type="Script" path="res://Weapons/BASIC_WEAPONS/Weapon.gd" id="1_1rkfl"]
+[ext_resource type="Script" path="res://TileMaps/Weapons/BASIC_WEAPONS/Weapon.gd" id="1_1rkfl"]
 [ext_resource type="Texture2D" uid="uid://h27x30xavl11" path="res://GunsSprites/PISTOL_01.png" id="2_e60n4"]
+
 
 
 

@@ -1,0 +1,133 @@
+[gd_scene load_steps=15 format=3 uid="uid://d0m8jr5qmepo7"]
+
+[ext_resource type="Script" path="res://scenes/MainScreen.gd" id="1_lif3m"]
+[ext_resource type="FontFile" uid="uid://lo56ky08qfev" path="res://Fonts/3D-Thirteen-Pixel-Fonts.ttf" id="2_nrcna"]
+[ext_resource type="Theme" uid="uid://ky5myamsyvlm" path="res://Themes/play_btn.tres" id="3_l3uk8"]
+[ext_resource type="Texture2D" uid="uid://bgc0t56l24g6l" path="res://Player/PlayerSprites/IDLE/base_idle_strip9.png" id="10_5wu0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4h6"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7m0a"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmwpc"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcg6n"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng87a"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcqg7"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mfk8"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0rin"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuadx"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f2wm1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc4h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7m0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmwpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcg6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng87a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcqg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mfk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0rin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuadx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_lif3m")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0.270588, 0.454902, 1)
+
+[node name="TITLE" type="Label" parent="Background"]
+layout_mode = 0
+offset_right = 97.0
+offset_bottom = 13.0
+scale = Vector2(0.93, 0.93)
+theme_override_fonts/font = ExtResource("2_nrcna")
+text = "BULLET HELL"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -80.0
+offset_right = 24.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_l3uk8")
+text = "PLAY
+"
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+position = Vector2(44, 50)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_f2wm1")
+animation = &"idle"
+autoplay = "idle"
+
+[connection signal="button_up" from="Background/PlayButton" to="." method="_on_play_button_button_up"]

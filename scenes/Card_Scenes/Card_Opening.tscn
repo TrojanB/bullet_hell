@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://q284067aesjp"]
 
-[ext_resource type="Script" path="res://scenes/Card_Scenes/card_opening.gd" id="1_rctca"]
-[ext_resource type="PackedScene" uid="uid://dv06wdwrvrrb7" path="res://card_pack.tscn" id="1_xdaup"]
-[ext_resource type="FontFile" uid="uid://t7vnh0padj13" path="res://Fonts/prstart.ttf" id="2_o3jrq"]
+[ext_resource type="Script" path="res://scenes/Card_Scenes/card_opening.gd" id="1_45x1y"]
+[ext_resource type="PackedScene" uid="uid://dv06wdwrvrrb7" path="res://scenes/Card_Scenes/card_pack.tscn" id="2_ndioc"]
+[ext_resource type="FontFile" uid="uid://t7vnh0padj13" path="res://Fonts/prstart.ttf" id="3_b08ej"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_88wgc"]
-font = ExtResource("2_o3jrq")
+font = ExtResource("3_b08ej")
 font_size = 6
 outline_size = 1
 outline_color = Color(6.257e-07, 0.619885, 0.447376, 1)
@@ -19,7 +19,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rctca")
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("1_45x1y")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -28,9 +30,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0.126602, 0.574321, 0.761944, 1)
 
-[node name="Card_Pack" parent="ColorRect" instance=ExtResource("1_xdaup")]
+[node name="Card_Pack" parent="ColorRect" instance=ExtResource("2_ndioc")]
 custom_minimum_size = Vector2(37.5, 66)
 layout_mode = 1
 anchors_preset = 8
@@ -57,4 +60,6 @@ text = "TAP TO OPEN"
 label_settings = SubResource("LabelSettings_88wgc")
 horizontal_alignment = 1
 
-[connection signal="PACK_OPENED" from="ColorRect/Card_Pack" to="." method="_on_card_pack_pack_opened"]
+[connection signal="pack_opened" from="." to="." method="_on_pack_opened"]
+[connection signal="pack_opened" from="." to="ColorRect/Card_Pack" method="_on_card_opening_pack_opened"]
+[connection signal="tapped" from="." to="ColorRect/Card_Pack" method="_on_card_opening_tapped"]

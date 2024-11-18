@@ -1,10 +1,68 @@
 extends Control
 
-@onready var play_button = $Background/PlayButton
-@onready var weapons_button = $Background/BottomPanel/BottomButtons/WeaponsButton
-@onready var customize_button = $Background/BottomPanel/BottomButtons/CustomizeButton
+@onready var inventory = $Inventory
+@onready var main_screen = $MainScreen
+@onready var card_opening = $Card_Opening
 
-@onready var menu_button = $Background/BottomButtons/MenuButton
+var is_dragging := false
+var current_tab_index := 1  # 0 = inventory, 1 = menu, 2 = card_opening
+var swipe_threshold := 7  # Minimalna odległość potrzebna do wykrycia przesunięcia
+var swipe_start_position : Vector2
+var tab_positions := [0, -90, -180]  # Pozycje X zakładek
 
-func _on_play_button_button_up():
-	get_tree().change_scene_to_file("res://scenes/level_selection.tscn")
+var go_right : bool = false
+
+func  _ready():
+	set_process_input(true)
+
+func _gui_input(event):
+	if event is InputEventScreenTouch and event.is_pressed():
+		print("TOUCHED")
+		swipe_start_position = event.position
+		
+	elif event is InputEventScreenDrag:
+		is_dragging = true
+		var swipe_delta = event.position - swipe_start_position
+		print(swipe_delta.x)
+		if swipe_delta.x > 0: #zmieniam zakladke w lewo
+			position.x += swipe_delta.x
+			go_right = false
+		else: #zmieniam zakladke w prawo
+			position.x += swipe_delta.x
+			go_right = true
+		
+	elif is_dragging and event is InputEventScreenTouch and not event.is_pressed():
+		print("STOP DRAGGING/TOUCHING")
+		is_dragging = false
+		swipe_start_position = Vector2.ZERO
+		if go_right and current_tab_index < tab_positions.size()-1:
+			current_tab_index+=1
+		elif not go_right and current_tab_index > 0:
+			current_tab_index -=1
+		move_to_tab(current_tab_index)
+	elif event is InputEventScreenTouch and not event.is_pressed():
+		if position.x != tab_positions[current_tab_index]:
+			move_to_tab(current_tab_index)
+
+# Funkcja do przeskoku do najbliższej zakładki
+func snap_to_closest_tab():
+	var closest_tab_index = current_tab_index
+	var min_distance = abs(position.x - tab_positions[current_tab_index])
+
+	# Znajdź najbliższą zakładkę
+	for i in range(tab_positions.size()):
+		var distance = abs(position.x - tab_positions[i])
+		if distance < min_distance:
+			min_distance = distance
+			closest_tab_index = i
+	
+	current_tab_index = closest_tab_index
+	move_to_tab(current_tab_index)
+
+# Przemieszcza pozycję do odpowiedniej zakładki
+func move_to_tab(tab_index):
+	print("YOOO")
+	var target_x = tab_positions[tab_index]
+	var tween = get_tree().create_tween()
+	tween.EASE_OUT
+	tween.tween_property(self, "position", Vector2(target_x,position.y), 0.12)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dv06wdwrvrrb7"]
 
-[ext_resource type="Script" path="res://card_pack.gd" id="1_4feqv"]
+[ext_resource type="Script" path="res://scenes/Card_Scenes/card_pack.gd" id="1_4feqv"]
 [ext_resource type="Shader" path="res://enemy.gdshader" id="1_th0xb"]
 [ext_resource type="Texture2D" uid="uid://cjhnvtb4m18dx" path="res://GameSprites/UI_SPRITES/CARDS_TEXTURES/CARD_PACK.png" id="2_7nugt"]
 
@@ -187,6 +187,7 @@ offset_bottom = 0.0799942
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(18, 33)
+mouse_filter = 1
 script = ExtResource("1_4feqv")
 
 [node name="TextureRect" type="TextureRect" parent="."]

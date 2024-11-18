@@ -1,0 +1,310 @@
+[gd_scene load_steps=21 format=3 uid="uid://d0m8jr5qmepo7"]
+
+[ext_resource type="Script" path="res://scenes/MainScreen.gd" id="1_lif3m"]
+[ext_resource type="FontFile" uid="uid://lo56ky08qfev" path="res://Fonts/3D-Thirteen-Pixel-Fonts.ttf" id="2_nrcna"]
+[ext_resource type="Theme" uid="uid://ky5myamsyvlm" path="res://Themes/play_btn.tres" id="3_l3uk8"]
+[ext_resource type="Script" path="res://scenes/bottom_buttons.gd" id="4_sdl6n"]
+[ext_resource type="Theme" uid="uid://bkhr06ys753vf" path="res://Themes/bottom_button.tres" id="5_mtwwf"]
+[ext_resource type="FontFile" uid="uid://dxf0rvegqcyfs" path="res://Fonts/BULKYPIX.TTF" id="6_wk2at"]
+[ext_resource type="Texture2D" uid="uid://nym4u0d5dyt0" path="res://GameSprites/UI_SPRITES/accept_symbol.png" id="7_kpax1"]
+[ext_resource type="Texture2D" uid="uid://d4nvwc4b4aogs" path="res://GameSprites/UI_SPRITES/close_symbol.png" id="8_echml"]
+[ext_resource type="Texture2D" uid="uid://h27x30xavl11" path="res://GunsSprites/PISTOL_01.png" id="9_lcqu5"]
+[ext_resource type="Texture2D" uid="uid://bgc0t56l24g6l" path="res://Player/PlayerSprites/IDLE/base_idle_strip9.png" id="10_5wu0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4h6"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7m0a"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmwpc"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcg6n"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng87a"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcqg7"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mfk8"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0rin"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuadx"]
+atlas = ExtResource("10_5wu0h")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f2wm1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc4h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7m0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmwpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcg6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng87a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcqg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mfk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0rin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuadx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lif3m")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.270588, 0.454902, 1)
+
+[node name="TITLE" type="Label" parent="Background"]
+layout_mode = 0
+offset_right = 97.0
+offset_bottom = 13.0
+scale = Vector2(0.93, 0.93)
+theme_override_fonts/font = ExtResource("2_nrcna")
+text = "BULLET HELL"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -80.0
+offset_right = 24.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_l3uk8")
+text = "PLAY
+"
+
+[node name="BottomButtons" type="HBoxContainer" parent="Background"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.859
+anchor_right = 1.0
+anchor_bottom = 0.984
+offset_top = 7.56
+offset_bottom = 2.56
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("4_sdl6n")
+
+[node name="WeaponsButton" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_mtwwf")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Background/BottomButtons/WeaponsButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.75
+offset_top = -3.0
+offset_right = 49.25
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("6_wk2at")
+theme_override_font_sizes/font_size = 8
+text = "GUNS
+"
+horizontal_alignment = 1
+
+[node name="InventoryButton" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_mtwwf")
+icon = ExtResource("7_kpax1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Background/BottomButtons/InventoryButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.75
+offset_top = -3.0
+offset_right = 49.25
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("6_wk2at")
+theme_override_font_sizes/font_size = 8
+text = "INV
+"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(20, 15)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("5_mtwwf")
+icon = ExtResource("8_echml")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Background/BottomButtons/MenuButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.75
+offset_top = -3.0
+offset_right = 49.25
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("6_wk2at")
+theme_override_font_sizes/font_size = 8
+text = "MENU
+"
+horizontal_alignment = 1
+
+[node name="WeaponsButton2" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_mtwwf")
+icon = ExtResource("9_lcqu5")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Background/BottomButtons/WeaponsButton2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.75
+offset_top = -3.0
+offset_right = 49.25
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("6_wk2at")
+theme_override_font_sizes/font_size = 8
+text = "GUNS
+"
+horizontal_alignment = 1
+
+[node name="WeaponsButton3" type="Button" parent="Background/BottomButtons"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_mtwwf")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Background/BottomButtons/WeaponsButton3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.75
+offset_top = -3.0
+offset_right = 49.25
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("6_wk2at")
+theme_override_font_sizes/font_size = 8
+text = "GUNS
+"
+horizontal_alignment = 1
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+position = Vector2(44, 50)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_f2wm1")
+animation = &"idle"
+autoplay = "idle"
+
+[connection signal="button_up" from="Background/PlayButton" to="." method="_on_play_button_button_up"]
+[connection signal="pressed" from="Background/BottomButtons/WeaponsButton" to="Background/BottomButtons" method="_on_weapons_button_pressed"]
+[connection signal="pressed" from="Background/BottomButtons/InventoryButton" to="Background/BottomButtons" method="_on_weapons_button_pressed"]
+[connection signal="pressed" from="Background/BottomButtons/MenuButton" to="Background/BottomButtons" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Background/BottomButtons/WeaponsButton2" to="Background/BottomButtons" method="_on_weapons_button_pressed"]
+[connection signal="pressed" from="Background/BottomButtons/WeaponsButton3" to="Background/BottomButtons" method="_on_weapons_button_pressed"]
