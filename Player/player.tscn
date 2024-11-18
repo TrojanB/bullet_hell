@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://b0j10wyym4efd" path="res://GameSprites/DIAMONDS/blue_diamond.png" id="17_f5xpu"]
 [ext_resource type="Script" path="res://Player/Diamonds_Label.gd" id="17_h3t6n"]
 
-
 [sub_resource type="Animation" id="Animation_aoqe4"]
 resource_name = "RESET"
 tracks/0/type = "value"

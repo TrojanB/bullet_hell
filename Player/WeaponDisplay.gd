@@ -14,5 +14,3 @@ func _ready():
 			var weapon_pivot = weapon.get_node("WeaponPivot")
 			weapon_pivot.rotation = deg_to_rad(weapon_pivot_rotation)
 			weapon_pivot_rotation += 15
-
-

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://knnds6au6rvy" path="res://GameSprites/BUTTONS/[1] Light Blue/[3] Hover.png" id="1_kmloq"]
 [ext_resource type="Texture2D" uid="uid://djo71r752gwgx" path="res://GameSprites/BUTTONS/[1] Light Blue/[2] Clicked.png" id="2_dsjii"]
 [ext_resource type="Texture2D" uid="uid://bi7gf7o2d54qm" path="res://GameSprites/BUTTONS/[1] Light Blue/[1] Normal.png" id="3_1yees"]
-[ext_resource type="Script" path="res://button.gd" id="4_fm2yc"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="4_fm2yc"]
 
 [node name="Button" type="Button"]
 offset_right = 48.0

@@ -5,7 +5,7 @@ var weapon : weapon_card = null
 @onready var card_panel = $Card_Panel
 @onready var roll_down_panel = $Roll_Down_Panel
 @onready var animation_player = $AnimationPlayer
-@onready var roll_down_bool = false
+@onready var roll_down_bool = true
 
 @onready var name_label = $Card_Panel/Name_Label
 @onready var button = $Card_Panel/Button
@@ -18,27 +18,29 @@ var weapon : weapon_card = null
 
 @onready var path_to_guns_sprites : String = Gm.path_to_guns_sprites
 var is_dragging = false
+signal pressed
 
 func _ready():
 	update_ui()
 
 func _gui_input(event):
 	if event is InputEventScreenTouch and not event.is_pressed() and not is_dragging:
+		pressed.emit()
 		if roll_down_bool:
-			animation_player.play("roll_up")
-			roll_down_bool = false
+			roll_down()
 		else:
-			animation_player.play("roll_down")
-			roll_down_bool = true
+			roll_up()
 	elif event is InputEventScreenDrag and not is_dragging:
+		print("CARD DRAGGED")
 		is_dragging = true
-	elif InputEventScreenTouch and not event.is_pressed() and is_dragging:
-		is_dragging = true
+	elif InputEventScreenTouch and event.is_pressed() and is_dragging:
+		print("CARD STOPPED")
+		is_dragging = false
 
 func update_ui():
 	if weapon:
 		if name_label:
-			name_label.text = weapon.weapon_name
+			name_label.text = weapon.name
 		else:
 			print("name_label is null")
 		
@@ -57,7 +59,7 @@ func update_ui():
 		else:
 			print("fire_rate_label is null")
 		
-		var weapon_image = load(path_to_guns_sprites + weapon.weapon_name + ".png")
+		var weapon_image = load(path_to_guns_sprites + weapon.name + ".png")
 		if weapon_image:
 			weapon_texture.texture = weapon_image
 		print("WEAPON CARD: ALRIGHT")
@@ -70,3 +72,31 @@ func update_ui():
 			upgrade_progress_label.text = str(weapon.amount, "/", needed_cards)
 	else:
 		print("WEAPON CARD: NOT GOOD")
+
+func roll_down():
+	animation_player.play("roll_down")
+	roll_down_bool = false
+
+func roll_up():
+	animation_player.play("roll_up")
+	roll_down_bool = true
+
+func _on_mouse_entered():
+	scale = Vector2(1.1,1.1)
+
+func _on_mouse_exited():
+	scale = Vector2(1,1)
+
+
+func _on_upgrade_button_mouse_entered():
+	scale = Vector2(1.1,1.1)
+
+func _on_upgrade_button_mouse_exited():
+	scale = Vector2(1,1)
+
+
+func _on_equip_button_mouse_entered():
+	scale = Vector2(1.1,1.1)
+
+func _on_equip_button_mouse_exited():
+	scale = Vector2(1,1)

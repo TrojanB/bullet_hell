@@ -20,9 +20,12 @@ func _on_pack_opened():
 	var cards_script = cards.new()
 	var card = card_pattern.instantiate()
 	var random_card : weapon_card = cards_script.get_random_card()
+	Gm.player_weapons.append(random_card)
 	
 	card.weapon = random_card
 	add_child(card)
 	card.position = Vector2(27.5,40)
 	card.get_node("AnimationPlayer").play("pop_up")
 	card.mouse_filter = MOUSE_FILTER_IGNORE
+	
+	

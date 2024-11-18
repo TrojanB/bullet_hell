@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://m0c1odflunq5"]
+[gd_scene load_steps=6 format=3 uid="uid://m0c1odflunq5"]
 
-[ext_resource type="PackedScene" uid="uid://cx7yfe6s4n1k7" path="res://scenes/Card_Scenes/weapon_card.tscn" id="1_t2q87"]
+[ext_resource type="Script" path="res://scenes/Card_Scenes/InventroyScript.gd" id="1_yuc4g"]
+[ext_resource type="PackedScene" uid="uid://bvl5qkhqujkb0" path="res://scenes/weapon_slot.tscn" id="2_ral3i"]
+[ext_resource type="FontFile" uid="uid://d3hsf8rev4rdj" path="res://Fonts/Moderniz.otf" id="3_ugotw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ay778"]
+bg_color = Color(0.666667, 0.882353, 0.972549, 0.32549)
+shadow_color = Color(0, 0, 0, 0.678431)
+
+[sub_resource type="LabelSettings" id="LabelSettings_afd26"]
+font = ExtResource("3_ugotw")
+font_size = 8
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -10,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_yuc4g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -35,57 +46,54 @@ scale = Vector2(0.6, 0.6)
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="HFlowContainer" type="HFlowContainer" parent="ScrollContainer"]
+[node name="Inventory" type="HFlowContainer" parent="ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 15
 alignment = 1
 
-[node name="Label" type="Label" parent="ScrollContainer/HFlowContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/Inventory"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "WEAPONS"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(150, 60)
+[node name="Panel" type="Panel" parent="ScrollContainer/Inventory"]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ay778")
+
+[node name="Label" type="Label" parent="ScrollContainer/Inventory/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -3.0
+offset_bottom = 14.0
+grow_horizontal = 2
+text = "EQUIPPED WEAPONS"
+label_settings = SubResource("LabelSettings_afd26")
+horizontal_alignment = 1
+
+[node name="EquippedWeaponsContaier" type="HBoxContainer" parent="ScrollContainer/Inventory/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 14.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Weapon_Slot" parent="ScrollContainer/Inventory/Panel/EquippedWeaponsContaier" instance=ExtResource("2_ral3i")]
 layout_mode = 2
 
-[node name="Weapon_Card3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
+[node name="Weapon_Slot2" parent="ScrollContainer/Inventory/Panel/EquippedWeaponsContaier" instance=ExtResource("2_ral3i")]
 layout_mode = 2
 
-[node name="Weapon_Card4" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
+[node name="Weapon_Slot3" parent="ScrollContainer/Inventory/Panel/EquippedWeaponsContaier" instance=ExtResource("2_ral3i")]
 layout_mode = 2
 
-[node name="Weapon_Card5" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
-layout_mode = 2
-
-[node name="Weapon_Card6" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
-layout_mode = 2
-
-[node name="Weapon_Card7" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
-layout_mode = 2
-
-[node name="Weapon_Card8" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
-layout_mode = 2
-
-[node name="Weapon_Card9" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
-layout_mode = 2
-
-[node name="Weapon_Card10" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
-layout_mode = 2
-
-[node name="Weapon_Card11" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
-layout_mode = 2
-
-[node name="Weapon_Card12" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
-layout_mode = 2
-
-[node name="Weapon_Card13" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_t2q87")]
-layout_mode = 2
-
-[node name="SpaceHolder" type="Control" parent="ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(150, 40)
+[node name="Weapon_Slot4" parent="ScrollContainer/Inventory/Panel/EquippedWeaponsContaier" instance=ExtResource("2_ral3i")]
 layout_mode = 2
