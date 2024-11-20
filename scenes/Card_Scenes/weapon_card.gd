@@ -19,6 +19,8 @@ var weapon : weapon_card = null
 @onready var path_to_guns_sprites : String = Gm.path_to_guns_sprites
 var is_dragging = false
 signal pressed
+signal equip
+signal upgrade
 
 func _ready():
 	update_ui()
@@ -87,16 +89,17 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	scale = Vector2(1,1)
 
-
 func _on_upgrade_button_mouse_entered():
 	scale = Vector2(1.1,1.1)
 
 func _on_upgrade_button_mouse_exited():
 	scale = Vector2(1,1)
 
-
 func _on_equip_button_mouse_entered():
 	scale = Vector2(1.1,1.1)
 
 func _on_equip_button_mouse_exited():
 	scale = Vector2(1,1)
+
+func _on_equip_button_button_up():
+	equip.emit()
