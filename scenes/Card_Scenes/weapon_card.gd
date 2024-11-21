@@ -1,14 +1,16 @@
 extends Control
 
 var weapon : weapon_card = null
+var equipped := false
+@onready var roll_down_bool = true
 
 @onready var card_panel = $Card_Panel
 @onready var roll_down_panel = $Roll_Down_Panel
 @onready var animation_player = $AnimationPlayer
-@onready var roll_down_bool = true
 
 @onready var name_label = $Card_Panel/Name_Label
-@onready var button = $Card_Panel/Button
+@onready var equip_button = $Card_Panel/EquipButton
+@onready var upgrade_button = $Roll_Down_Panel/UpgradeButton
 @onready var damage_label = $Roll_Down_Panel/Damage_Label
 @onready var fire_rate_label = $Roll_Down_Panel/Fire_Rate_Label
 @onready var level_label = $Card_Panel/Level_Label
@@ -24,6 +26,7 @@ signal upgrade
 
 func _ready():
 	update_ui()
+	connect("equip", Callable(self, "_on_equipped_changed"))
 
 func _gui_input(event):
 	if event is InputEventScreenTouch and not event.is_pressed() and not is_dragging:
@@ -83,6 +86,17 @@ func roll_up():
 	animation_player.play("roll_up")
 	roll_down_bool = true
 
+func reset():
+	animation_player.play("RESET")
+	roll_down_bool = true
+
+func _on_equipped_changed():
+	if equipped:
+		equip_button.text = "UNEQUIP"
+	else:
+		equip_button.text = "EQUIP"
+
+#===================================================#
 func _on_mouse_entered():
 	scale = Vector2(1.1,1.1)
 

@@ -7,6 +7,9 @@ var player_weapons: Array[weapon_card] = [
 	weapon_card.new("PISTOL_02", 10, 2, 50,3,1,3),
 	weapon_card.new("PISTOL_01", 10, 2, 50,3,1,3)
 ]
+var player_equipped_weapons : Array = [
+	
+]
 
 enum game_mode {KILL_AMOUNT,SURVIVE_TIME,KILL_AMOUNT_TIME,KILL_BOSS}
 enum rarities {COMMON, RARE, EPIC, LEGENDARY}

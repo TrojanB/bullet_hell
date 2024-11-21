@@ -26,7 +26,7 @@ func _add_space_holder(s : Vector2):
 	space_holder.custom_minimum_size = s
 	inventory_contianer.add_child(space_holder)
 	
-func _on_card_pressed(new_card):
+func _on_card_pressed(new_card): #If player click on another card prievious resets to deafult
 	print("ONCARD")
 	if selected_card and selected_card != new_card and not selected_card.roll_down_bool:
 		selected_card.roll_up()
@@ -38,7 +38,13 @@ func _on_card_equip(card):
 	player_wants_to_equip = true
 
 func _on_slot_pressed(slot):
-	print("hello")
-	if selected_card and player_wants_to_equip:
+	if selected_card and selected_card.weapon and not selected_card.equipped and player_wants_to_equip:
+		Gm.player_equipped_weapons.append(selected_card.weapon)
+		Gm.player_weapons.erase(selected_card.weapon)
+		selected_card.equipped = true
+		
+		selected_card.get_parent().remove_child(selected_card)
 		slot.add_child(selected_card)
-		print("card should be added")
+		selected_card.position = Vector2.ZERO
+		selected_card.reset()
+		selected_card.equip.emit()
